@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b128l4cf8d763"]
+
+[ext_resource type="Script" path="res://Splash/Splash.cs" id="1_a7ixu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pq27"]
+
+[node name="Splash" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_a7ixu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5pq27")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
