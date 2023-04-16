@@ -5,6 +5,7 @@ public partial class Splash : FloatingBody
 {
     private bool Impulse = true;
     private const float WaterSpeed = 600.0f;
+    private PlayerData SplashData = new PlayerData();
     public override async void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -23,10 +24,19 @@ public partial class Splash : FloatingBody
         }
 		Velocity = velocity;
 		MoveAndSlide();
+
+        SplashData.ComputeOxygen((float)delta, IsInWater());
+        if(!SplashData.IsPlayerAlive()){
+            Die();
+        }
 	}
 
     public void _OnTimerTimeout()
     {
         Impulse = true;
+    }
+
+    public void Die(){
+        GD.Print("You died!");
     }
 }
