@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxvlinku1s33o"]
+
+[ext_resource type="PackedScene" uid="uid://b128l4cf8d763" path="res://Splash/splash.tscn" id="1_8eu02"]
+[ext_resource type="Script" path="res://World/World.cs" id="1_v86y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3xcn"]
+size = Vector2(1536, 4000)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0cnbw"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_v86y4")
+
+[node name="Water" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+position = Vector2(768, 200)
+shape = SubResource("RectangleShape2D_d3xcn")
+
+[node name="Splash" parent="." instance=ExtResource("1_8eu02")]
+position = Vector2(979, -2111)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 2180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_0cnbw")
+
+[connection signal="body_entered" from="Water" to="." method="_OnWaterBodyEntered"]
+[connection signal="body_exited" from="Water" to="." method="_OnWaterBodyExited"]
