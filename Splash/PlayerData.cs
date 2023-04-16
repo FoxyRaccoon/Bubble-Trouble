@@ -3,10 +3,12 @@ using Godot;
 public class PlayerData{
     private float MaxOxygen;
     private float CurrentOxygen;
+    private Inventory PlayerInventory;
     private bool IsAlive = true;
     public PlayerData(){
         MaxOxygen = 10f;
         CurrentOxygen = 10f;
+        PlayerInventory = new Inventory(10);
     }
 
     public float GetOxygen(){
@@ -31,5 +33,9 @@ public class PlayerData{
 
     public bool IsPlayerAlive(){
         return IsAlive;
+    }
+
+    public Inventory GetInventory(){
+        return PlayerInventory;
     }
 }
