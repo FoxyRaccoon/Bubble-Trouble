@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxvlinku1s33o"]
+[gd_scene load_steps=9 format=3 uid="uid://bxvlinku1s33o"]
 
 [ext_resource type="PackedScene" uid="uid://b128l4cf8d763" path="res://Splash/splash.tscn" id="1_8eu02"]
 [ext_resource type="Script" path="res://World/World.cs" id="1_v86y4"]
+[ext_resource type="Script" path="res://World/FollowingCamera.cs" id="3_a0ywa"]
+[ext_resource type="PackedScene" uid="uid://bxg22pcqf73nb" path="res://Collectibles/shell.tscn" id="4_nfau2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3xcn"]
-size = Vector2(1536, 4000)
+size = Vector2(2000, 4000)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0cnbw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x106t"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xa6li"]
+normal = Vector2(-1, 0)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_v86y4")
@@ -16,17 +24,38 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
-position = Vector2(768, 200)
+position = Vector2(0, 200)
 shape = SubResource("RectangleShape2D_d3xcn")
 
 [node name="Splash" parent="." instance=ExtResource("1_8eu02")]
-position = Vector2(979, -2111)
+position = Vector2(0, -2111)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 2180)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_0cnbw")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-1000, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_x106t")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(1000, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_xa6li")
+
+[node name="FollowingCamera" type="Camera2D" parent="."]
+zoom = Vector2(1.4, 1.4)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("3_a0ywa")
+
+[node name="Shell" parent="." instance=ExtResource("4_nfau2")]
+position = Vector2(97, -1869)
 
 [connection signal="body_entered" from="Water" to="." method="_OnWaterBodyEntered"]
 [connection signal="body_exited" from="Water" to="." method="_OnWaterBodyExited"]

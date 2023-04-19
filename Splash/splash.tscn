@@ -1,20 +1,135 @@
-[gd_scene load_steps=3 format=3 uid="uid://b128l4cf8d763"]
+[gd_scene load_steps=10 format=3 uid="uid://b128l4cf8d763"]
 
 [ext_resource type="Script" path="res://Splash/Splash.cs" id="1_a7ixu"]
+[ext_resource type="Texture2D" uid="uid://b8beq1k4wmcex" path="res://Resources/Sprites/Squid/squid_anim.png" id="2_gdj4g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pq27"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wc12"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1e3t"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_xm43j"]
+resource_name = "move"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_kpv47"]
+resource_name = "grab"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arms/RightArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(200, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arms/RightArm/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishGrab"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_giro8"]
+_data = {
+"grab": SubResource("Animation_kpv47"),
+"move": SubResource("Animation_xm43j")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0uk6y"]
 
 [node name="Splash" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_a7ixu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 0)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5pq27")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 1.1
 one_shot = true
 
+[node name="Arms" type="Marker2D" parent="."]
+
+[node name="RightArm" type="Area2D" parent="Arms"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arms/RightArm"]
+shape = SubResource("CircleShape2D_3wc12")
+disabled = true
+
+[node name="LeftArm" type="Area2D" parent="Arms"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arms/LeftArm"]
+shape = SubResource("CircleShape2D_t1e3t")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gdj4g")
+vframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_giro8")
+}
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(16, 4.76837e-07)
+scale = Vector2(0.9, 0.5)
+
+[node name="CollectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+position = Vector2(16, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0uk6y")
+
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
+[connection signal="body_entered" from="Arms/RightArm" to="." method="_OnGrab"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnScreenExited"]

@@ -28,7 +28,6 @@ public class PlayerData{
                 IsAlive = false;
             }
         }
-        GD.Print(CurrentOxygen);
     }
 
     public bool IsPlayerAlive(){
