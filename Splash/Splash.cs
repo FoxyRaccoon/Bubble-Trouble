@@ -11,24 +11,37 @@ public partial class Splash : FloatingBody
     public override async void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-		// Vector2 direction = Input.GetVector("left", "right", "up", "down");
-        bool diving = Input.IsActionPressed("dash");
-        if(IsInWater()){
-            velocity.Y = Mathf.MoveToward(velocity.Y, 0, WaterFriction);
-            velocity.X = Mathf.MoveToward(velocity.X, 0, WaterFriction);
-            if(Impulse && diving){
-                velocity += Vector2.FromAngle(Rotation) * WaterSpeed;
-                GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
-                
-                Impulse = false;
-                GetNode<Timer>("Timer").Start();
-            }
+        bool swimming = Input.IsActionPressed("swimming");
+        bool dash = Input.IsActionPressed("dash");
+        if(dash){
+            velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
+            GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
+            GetNode<GpuParticles2D>("InkParticles").Emitting = true;
         }else{
-            velocity.Y += gravity * (float)delta;
-            velocity.X = Mathf.MoveToward(velocity.X, 0, AirFriction);
+            if(IsInWater()){
+                velocity.Y = Mathf.MoveToward(velocity.Y, 0, WaterFriction);
+                velocity.X = Mathf.MoveToward(velocity.X, 0, WaterFriction);
+                if(Impulse && swimming){
+                    velocity += Vector2.FromAngle(Rotation) * WaterSpeed;
+                    GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
+                    
+                    Impulse = false;
+                    GetNode<Timer>("Timer").Start();
+                }
+            }else{
+                velocity.Y += gravity * (float)delta;
+                velocity.X = Mathf.MoveToward(velocity.X, 0, AirFriction);
+            }
+            GetNode<GpuParticles2D>("InkParticles").Emitting = false;
         }
+        
 		Velocity = velocity;
-        Rotation = Mathf.LerpAngle(Rotation, (GetGlobalMousePosition() - GlobalPosition).Normalized().Angle(), 0.1f);
+        if(Velocity == Vector2.Zero || dash){
+            Rotation = Mathf.LerpAngle(Rotation, (GetGlobalMousePosition() - GlobalPosition).Normalized().Angle(), 0.1f);
+        }else{
+            Rotation = Mathf.LerpAngle(Rotation, Velocity.Angle(), 0.1f);
+        }
+        
 
 		MoveAndSlide();
 
@@ -58,9 +71,24 @@ public partial class Splash : FloatingBody
 
     public void _OnGrab(Node2D body){
         GetNode<AnimationPlayer>("AnimationPlayer").PlayBackwards("grab");
+        if(body is Collectible){
+            Collectible collectible = (Collectible)body;
+            collectible.Grab(this);
+        }
     }
 
     public void FinishGrab(){
         GetNode<AnimationPlayer>("AnimationPlayer").PlayBackwards("grab");
+    }
+
+    public void _OnCollectionAreaBodyEntered(Node2D body){
+        if(body is Collectible){
+            Collectible collectible = (Collectible)body;
+            collectible.Drop(this);
+        }
+    }
+
+    public PlayerData GetSplashData(){
+        return SplashData;
     }
 }

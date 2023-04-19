@@ -1,7 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://b128l4cf8d763"]
+[gd_scene load_steps=13 format=3 uid="uid://b128l4cf8d763"]
 
 [ext_resource type="Script" path="res://Splash/Splash.cs" id="1_a7ixu"]
 [ext_resource type="Texture2D" uid="uid://b8beq1k4wmcex" path="res://Resources/Sprites/Squid/squid_anim.png" id="2_gdj4g"]
+
+[sub_resource type="Curve" id="Curve_gyr82"]
+max_value = 4.0
+_data = [Vector2(0, 3.89091), 0.0, 0.0, 0, 0, Vector2(0.283333, 2.03636), 0.0, 0.0, 0, 0, Vector2(0.766667, 1.09091), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qm84n"]
+curve = SubResource("Curve_gyr82")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4rlcp"]
+emission_shape = 1
+emission_sphere_radius = 4.0
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 32.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 60.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_qm84n")
+color = Color(0, 0, 0, 1)
+turbulence_enabled = true
+turbulence_noise_scale = 4.0
+turbulence_influence_min = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pq27"]
 radius = 6.0
@@ -12,22 +37,6 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1e3t"]
 radius = 4.0
-
-[sub_resource type="Animation" id="Animation_xm43j"]
-resource_name = "move"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
 
 [sub_resource type="Animation" id="Animation_kpv47"]
 resource_name = "grab"
@@ -71,6 +80,23 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_xm43j"]
+resource_name = "move"
+length = 0.6
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_giro8"]
 _data = {
 "grab": SubResource("Animation_kpv47"),
@@ -82,6 +108,12 @@ _data = {
 [node name="Splash" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_a7ixu")
+
+[node name="InkParticles" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_4rlcp")
+lifetime = 0.8
+fixed_fps = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 0)
@@ -113,6 +145,7 @@ disabled = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_gdj4g")
 vframes = 10
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -124,6 +157,8 @@ position = Vector2(16, 4.76837e-07)
 scale = Vector2(0.9, 0.5)
 
 [node name="CollectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
 position = Vector2(16, 0)
@@ -133,3 +168,4 @@ shape = SubResource("CapsuleShape2D_0uk6y")
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
 [connection signal="body_entered" from="Arms/RightArm" to="." method="_OnGrab"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnScreenExited"]
+[connection signal="body_entered" from="CollectionArea" to="." method="_OnCollectionAreaBodyEntered"]
