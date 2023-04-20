@@ -15,6 +15,12 @@ public partial class Splash : FloatingBody
 		Vector2 velocity = Velocity;
         bool swimming = Input.IsActionPressed("swimming");
         bool dash = Input.IsActionPressed("dash");
+
+        if(Input.IsActionJustPressed("grab")){
+            GrabPoint = new Vector2(0, 0);
+            GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("grab");
+        }
+
         if(dash){
             velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
             GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
@@ -31,6 +37,7 @@ public partial class Splash : FloatingBody
                     
                 }
             }else{
+                GetNode<Marker2D>("TongueOrigin").Rotation = (GetGlobalMousePosition() - GetNode<Marker2D>("TongueOrigin").GlobalPosition).Normalized().Angle() - Rotation;
                 if(IsInWater()){
                     velocity.Y = Mathf.MoveToward(velocity.Y, 0, WaterFriction);
                     velocity.X = Mathf.MoveToward(velocity.X, 0, WaterFriction);
@@ -56,13 +63,8 @@ public partial class Splash : FloatingBody
             Rotation = Mathf.LerpAngle(Rotation, Velocity.Angle(), 0.1f);
         }
         
-
+        
 		MoveAndSlide();
-
-        if(Input.IsActionJustPressed("grab")){
-            GrabPoint = new Vector2(0, 0);
-            GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("grab");
-        }
 
         SplashData.ComputeOxygen((float)delta, IsInWater());
         if(!SplashData.IsPlayerAlive()){
@@ -89,7 +91,7 @@ public partial class Splash : FloatingBody
             Collectible collectible = (Collectible)body;
             collectible.Grab(this);
         }else{
-            GrabPoint = GetNode<Area2D>("Tongue").GlobalPosition;
+            GrabPoint = GetNode<Area2D>("TongueOrigin/Tongue").GlobalPosition;
         }
         GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("grab");
     }
@@ -100,6 +102,7 @@ public partial class Splash : FloatingBody
 
     public void _OnCollectionAreaBodyEntered(Node2D body){
         if(body is Collectible){
+            GD.Print("Collectible");
             Collectible collectible = (Collectible)body;
             collectible.Drop(this);
         }

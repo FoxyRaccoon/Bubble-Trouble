@@ -32,28 +32,25 @@ turbulence_influence_min = 0.0
 radius = 6.0
 height = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3wc12"]
-radius = 4.0
-
 [sub_resource type="Animation" id="Animation_kpv47"]
 resource_name = "grab"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tongue:position")
+tracks/0/path = NodePath("TongueOrigin/Tongue:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(26, 0), Vector2(200, 0)]
+"values": [Vector2(16, 0), Vector2(210, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tongue/CollisionShape2D:disabled")
+tracks/1/path = NodePath("TongueOrigin/Tongue/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,26 +76,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Polygon2D:scale")
+tracks/3/path = NodePath("TongueOrigin/TongueShape:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(16, 1)]
+"values": [Vector2(1, 1), Vector2(14, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Polygon2D:position")
+tracks/4/path = NodePath("TongueOrigin/TongueShape:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-230, 0)]
+"values": [Vector2(0, 0), Vector2(-13, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xm43j"]
@@ -129,26 +126,27 @@ _data = {
 [sub_resource type="Animation" id="Animation_opj2x"]
 resource_name = "grab"
 length = 0.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tongue:position")
+tracks/0/path = NodePath("TongueOrigin/Tongue:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(26, 0), Vector2(200, 0)]
+"values": [Vector2(26, 0), Vector2(198, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tongue/CollisionShape2D:disabled")
+tracks/1/path = NodePath("TongueOrigin/Tongue/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.01),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -170,26 +168,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Polygon2D:scale")
+tracks/3/path = NodePath("TongueOrigin/TongueShape:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(16, 1)]
+"values": [Vector2(1, 1), Vector2(40, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Polygon2D:position")
+tracks/4/path = NodePath("TongueOrigin/TongueShape:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-230, 0)]
+"values": [Vector2(0, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bj4qw"]
@@ -197,13 +195,12 @@ _data = {
 "grab": SubResource("Animation_opj2x")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wc12"]
+radius = 4.0
+
 [node name="Splash" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_a7ixu")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.988235, 0.576471, 0.733333, 1)
-polygon = PackedVector2Array(16, -1, 16, 1, 27, 1, 27, -1)
 
 [node name="InkParticles" type="GPUParticles2D" parent="."]
 amount = 100
@@ -219,15 +216,6 @@ shape = SubResource("CapsuleShape2D_5pq27")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.1
 one_shot = true
-
-[node name="Tongue" type="Area2D" parent="."]
-position = Vector2(26, 0)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tongue"]
-shape = SubResource("CircleShape2D_3wc12")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_gdj4g")
@@ -257,7 +245,23 @@ libraries = {
 "": SubResource("AnimationLibrary_bj4qw")
 }
 
+[node name="TongueOrigin" type="Marker2D" parent="."]
+position = Vector2(12, 0)
+
+[node name="Tongue" type="Area2D" parent="TongueOrigin"]
+position = Vector2(26, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TongueOrigin/Tongue"]
+shape = SubResource("CircleShape2D_3wc12")
+disabled = true
+
+[node name="TongueShape" type="Polygon2D" parent="TongueOrigin"]
+color = Color(0.988235, 0.576471, 0.733333, 1)
+polygon = PackedVector2Array(0, 1, 5, 1, 5, -1, 0, -1)
+
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
-[connection signal="body_entered" from="Tongue" to="." method="_OnGrab"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnScreenExited"]
 [connection signal="body_entered" from="CollectionArea" to="." method="_OnCollectionAreaBodyEntered"]
+[connection signal="body_entered" from="TongueOrigin/Tongue" to="." method="_OnGrab"]

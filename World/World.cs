@@ -25,4 +25,9 @@ public partial class World : Node2D
             AddChild(localInstance);
         }
     }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        GetNode<Marker2D>("WorldCenter").Rotation = GetNode<Marker2D>("WorldCenter").Rotation + 0.0001f;
+    }
 }
