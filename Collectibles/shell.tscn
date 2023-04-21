@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxg22pcqf73nb"]
 
-[ext_resource type="Script" path="res://Collectibles/Collectible.cs" id="1_i0hj0"]
+[ext_resource type="Script" path="res://Collectibles/Shell.cs" id="1_ej42q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmjh4"]
 radius = 4.0
@@ -8,7 +8,7 @@ radius = 4.0
 [node name="Shell" type="RigidBody2D"]
 collision_layer = 21
 gravity_scale = 0.0
-script = ExtResource("1_i0hj0")
+script = ExtResource("1_ej42q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bmjh4")

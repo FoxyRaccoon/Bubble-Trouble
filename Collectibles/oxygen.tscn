@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://fc2rokaltd11"]
+
+[ext_resource type="Script" path="res://Collectibles/Oxygen.cs" id="1_wrkng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prs6w"]
+size = Vector2(2, 2)
+
+[node name="Oxygen" type="RigidBody2D"]
+collision_layer = 20
+gravity_scale = -0.01
+script = ExtResource("1_wrkng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_prs6w")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.746525, 0.839877, 1, 1)
+polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)

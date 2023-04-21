@@ -13,4 +13,8 @@ public partial class Collectible : RigidBody2D
         QueueFree();
     }
 
+    public void SetItem(Stack item){
+        Item = item;
+    }
+
 }

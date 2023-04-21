@@ -2,7 +2,7 @@ public class Item{
     private string Name;
     private string Description;
     private int MaxStack;
-
+    
     public Item(string name, string description, int maxStack){
         Name = name;
         Description = description;
