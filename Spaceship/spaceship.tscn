@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://br13xk3fvk12e"]
+
+[ext_resource type="Texture2D" uid="uid://c83fyibpxx6r1" path="res://Resources/Sprites/SpaceshipSketch-Sheet.png" id="1_j3afj"]
+[ext_resource type="Script" path="res://Spaceship/Spaceship.cs" id="1_ve4xu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boup4"]
+radius = 50.0
+
+[node name="Spaceship" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_ve4xu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, -16)
+texture = ExtResource("1_j3afj")
+hframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_boup4")
+
+[node name="ShellBar" type="Node2D" parent="."]
+position = Vector2(54, -20)
+
+[node name="ColorRect" type="ColorRect" parent="ShellBar"]
+offset_right = 6.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0.329412)
+
+[node name="ColorRect2" type="ColorRect" parent="ShellBar"]
+offset_right = 6.0
+offset_bottom = 40.0
+
+[node name="Polygon2D2" type="Polygon2D" parent="ShellBar"]
+position = Vector2(3, -3)
+color = Color(1, 0.839216, 1, 1)
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+
+[node name="OxygenBar" type="Node2D" parent="."]
+position = Vector2(64, -20)
+
+[node name="ColorRect" type="ColorRect" parent="OxygenBar"]
+offset_right = 6.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0.329412)
+
+[node name="ColorRect2" type="ColorRect" parent="OxygenBar"]
+offset_right = 6.0
+offset_bottom = 40.0
+
+[node name="Polygon2D2" type="Polygon2D" parent="OxygenBar"]
+position = Vector2(3, -3)
+color = Color(0.746525, 0.839877, 1, 1)
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+
+[node name="OilBar" type="Node2D" parent="."]
+position = Vector2(74, -20)
+
+[node name="ColorRect" type="ColorRect" parent="OilBar"]
+offset_right = 6.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0.329412)
+
+[node name="ColorRect2" type="ColorRect" parent="OilBar"]
+offset_right = 6.0
+offset_bottom = 40.0
+
+[node name="Polygon2D2" type="Polygon2D" parent="OilBar"]
+position = Vector2(3, -3)
+color = Color(0.129412, 0.129412, 0.129412, 1)
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
