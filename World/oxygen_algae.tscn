@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://1kkujmksiqfc"]
 
 [ext_resource type="Script" path="res://World/OxygenAlgae.cs" id="1_hhp05"]
-[ext_resource type="Texture2D" uid="uid://d3ok1ttm2essr" path="res://Resources/Sprites/algae_spritesheet.png" id="1_v77qp"]
+[ext_resource type="Texture2D" path="res://Resources/Sprites/algae_spritesheet.png" id="1_v77qp"]
 
 [sub_resource type="Animation" id="Animation_yoi1s"]
 resource_name = "idle"

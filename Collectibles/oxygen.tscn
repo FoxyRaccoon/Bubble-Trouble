@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://fc2rokaltd11"]
+[gd_scene load_steps=3 format=3 uid="uid://dhpkay0fknvuq"]
 
 [ext_resource type="Script" path="res://Collectibles/Oxygen.cs" id="1_wrkng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prs6w"]
-size = Vector2(2, 2)
+size = Vector2(4, 4)
 
 [node name="Oxygen" type="RigidBody2D"]
 collision_layer = 20
