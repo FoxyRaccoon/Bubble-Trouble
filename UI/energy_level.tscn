@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dntjunwbt0oqv"]
+
+[ext_resource type="Script" path="res://UI/EnergyLevel.cs" id="1_6ucj5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kh1sx"]
+bg_color = Color(0.482353, 0.482353, 0.482353, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbj15"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="EnergyLevel" type="ProgressBar"]
+custom_minimum_size = Vector2(200, 8)
+offset_right = 4.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_kh1sx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rbj15")
+fill_mode = 1
+show_percentage = false
+script = ExtResource("1_6ucj5")

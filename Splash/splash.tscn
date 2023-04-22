@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b128l4cf8d763"]
+[gd_scene load_steps=15 format=3 uid="uid://b128l4cf8d763"]
 
 [ext_resource type="Script" path="res://Splash/Splash.cs" id="1_a7ixu"]
 [ext_resource type="Texture2D" uid="uid://b8beq1k4wmcex" path="res://Resources/Sprites/Squid/squid_anim.png" id="2_gdj4g"]
+[ext_resource type="PackedScene" uid="uid://co1vamo3bbvya" path="res://UI/ui.tscn" id="3_76n6b"]
 
 [sub_resource type="Curve" id="Curve_gyr82"]
 max_value = 4.0
@@ -260,6 +261,13 @@ disabled = true
 [node name="TongueShape" type="Polygon2D" parent="TongueOrigin"]
 color = Color(0.988235, 0.576471, 0.733333, 1)
 polygon = PackedVector2Array(0, 1, 5, 1, 5, -1, 0, -1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("3_76n6b")]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnScreenExited"]

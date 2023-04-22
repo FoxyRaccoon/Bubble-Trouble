@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://co1vamo3bbvya"]
+[gd_scene load_steps=4 format=3 uid="uid://co1vamo3bbvya"]
+
+[ext_resource type="Script" path="res://UI/UI.cs" id="1_5my8b"]
+[ext_resource type="PackedScene" uid="uid://cw3mwfgkfjllp" path="res://UI/oxygen_level.tscn" id="2_67tow"]
+[ext_resource type="PackedScene" uid="uid://dntjunwbt0oqv" path="res://UI/energy_level.tscn" id="3_00lhh"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -7,14 +11,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5my8b")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.00231481
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.00231
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
 metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="OxygenLevel" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_67tow")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="EnergyLevel" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_00lhh")]
+layout_mode = 2

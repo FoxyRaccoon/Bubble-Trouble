@@ -19,7 +19,8 @@ public partial class FollowingCamera : Camera2D
     public void _FollowedChangedScreen()
     {
         float newX = Followed.GlobalPosition.X;
-        if(Position.X > 1 || Position.X < -1){
+        float offset = 40;
+        if(Position.X > 1 || Position.X < -1 || (newX+40 < DisplayWidth/(2*Zoom.X) && newX-40 > -DisplayWidth/(2*Zoom.X))){
             newX = 0;
         }else if(newX > 1){
             newX = DisplayWidth/Zoom.X;

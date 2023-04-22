@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw3mwfgkfjllp"]
+
+[ext_resource type="Script" path="res://UI/OxygenLevel.cs" id="1_bxv3t"]
+
+[node name="OxygenLevel" type="HBoxContainer"]
+script = ExtResource("1_bxv3t")

@@ -10,6 +10,12 @@ public partial class Splash : FloatingBody
     private PlayerData SplashData = new PlayerData();
     private Vector2 GrabPoint = new Vector2(0, 0);
     public event OutOfScreenHandler OutOfScreen;
+
+    public override void _Ready()
+    {
+        GetNode<UI>("CanvasLayer/UI").SetPlayerData(SplashData);
+    }
+    
     public override async void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -21,7 +27,7 @@ public partial class Splash : FloatingBody
             GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("grab");
         }
 
-        if(dash){
+        if(dash && SplashData.UseEnergy(0.5f)){
             velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
             GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
             GetNode<GpuParticles2D>("InkParticles").Emitting = true;
@@ -102,9 +108,11 @@ public partial class Splash : FloatingBody
 
     public void _OnCollectionAreaBodyEntered(Node2D body){
         if(body is Collectible){
-            GD.Print("Collectible");
             Collectible collectible = (Collectible)body;
             collectible.Drop(this);
+            if(collectible is Fruit){
+                GetSplashData().Eat();
+            }
         }
     }
 

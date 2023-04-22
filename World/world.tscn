@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxvlinku1s33o"]
+[gd_scene load_steps=16 format=3 uid="uid://bxvlinku1s33o"]
 
 [ext_resource type="PackedScene" uid="uid://b128l4cf8d763" path="res://Splash/splash.tscn" id="1_8eu02"]
 [ext_resource type="Script" path="res://World/World.cs" id="1_v86y4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://br13xk3fvk12e" path="res://Spaceship/spaceship.tscn" id="6_0pgcc"]
 [ext_resource type="Texture2D" uid="uid://dwqspogmdltof" path="res://Resources/Sprites/better_light-transformed.png" id="6_uuhgp"]
 [ext_resource type="PackedScene" uid="uid://bxg22pcqf73nb" path="res://Collectibles/shell.tscn" id="7_cgtrm"]
+[ext_resource type="PackedScene" uid="uid://bp1vy62owo2vh" path="res://Collectibles/fruit.tscn" id="9_jk1sj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3xcn"]
 size = Vector2(4000, 4000)
@@ -164,6 +165,36 @@ position = Vector2(-5, -2381)
 
 [node name="Shell4" parent="Test" instance=ExtResource("7_cgtrm")]
 position = Vector2(155, -2346)
+
+[node name="Fruit" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(305, -2544)
+
+[node name="Fruit2" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(355, -2454)
+
+[node name="Fruit3" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(179, -2669)
+
+[node name="Fruit5" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(93, -1805)
+
+[node name="Fruit6" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(-120, -1811)
+
+[node name="Fruit7" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(249, -1815)
+
+[node name="Fruit8" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(5, -1961)
+
+[node name="Fruit9" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(-246, -1974)
+
+[node name="Fruit10" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(-386, -1996)
+
+[node name="Fruit4" parent="Test" instance=ExtResource("9_jk1sj")]
+position = Vector2(516, -2493)
 
 [connection signal="body_entered" from="Water" to="." method="_OnWaterBodyEntered"]
 [connection signal="body_exited" from="Water" to="." method="_OnWaterBodyExited"]
