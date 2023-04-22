@@ -9,6 +9,7 @@ public partial class Splash : FloatingBody
     private const float GrabSpeed = 600.0f;
     private PlayerData SplashData = new PlayerData();
     private Vector2 GrabPoint = new Vector2(0, 0);
+    private bool Protected = false;
     public event OutOfScreenHandler OutOfScreen;
 
     public override void _Ready()
@@ -16,7 +17,7 @@ public partial class Splash : FloatingBody
         GetNode<UI>("CanvasLayer/UI").SetPlayerData(SplashData);
     }
     
-    public override async void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
         bool swimming = Input.IsActionPressed("swimming");
@@ -85,6 +86,7 @@ public partial class Splash : FloatingBody
 
     public void Die(){
         GD.Print("You died!");
+        GetSplashData().GetInventory().Clear();
     }
 
     public void _OnScreenExited()
@@ -118,5 +120,13 @@ public partial class Splash : FloatingBody
 
     public PlayerData GetSplashData(){
         return SplashData;
+    }
+
+    public bool IsProtected(){
+        return Protected;
+    }
+
+    public void Protect(bool protect){
+        Protected = protect;
     }
 }

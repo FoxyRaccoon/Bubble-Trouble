@@ -59,4 +59,11 @@ public class Inventory{
                 return null;
         }
     }
+
+    public void Clear(){
+        OxygenStack = new Stack(ItemEnum.OXYGEN, 0);
+        OilStack = new Stack(ItemEnum.OIL, 0);
+        ShellStack = new Stack(ItemEnum.SHELL, 0);
+        FruitStack = new Stack(ItemEnum.FRUIT, 0);
+    }
 }

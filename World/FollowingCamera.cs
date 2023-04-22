@@ -20,7 +20,7 @@ public partial class FollowingCamera : Camera2D
     {
         float newX = Followed.GlobalPosition.X;
         float offset = 40;
-        if(Position.X > 1 || Position.X < -1 || (newX+40 < DisplayWidth/(2*Zoom.X) && newX-40 > -DisplayWidth/(2*Zoom.X))){
+        if(Position.X > 1 || Position.X < -1 || (newX+offset < DisplayWidth/(2*Zoom.X) && newX-offset > -DisplayWidth/(2*Zoom.X))){
             newX = 0;
         }else if(newX > 1){
             newX = DisplayWidth/Zoom.X;
