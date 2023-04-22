@@ -16,11 +16,12 @@ public class Stack{
     }
 
     public Stack RemoveQuantity(int quantity){
-        if(quantity > Quantity){
-            return null;
-        }else{
-            return new Stack(Item, Quantity - quantity);
+        Stack ret = null;
+        if(quantity <= Quantity){
+            ret = new Stack(Item, quantity);
+            Quantity -= quantity;
         }
+        return ret;
     }
 
     public Stack AddQuantity(Stack stack){

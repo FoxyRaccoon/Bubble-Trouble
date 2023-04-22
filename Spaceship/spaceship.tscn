@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_boup4"]
 radius = 50.0
 
-[node name="Spaceship" type="StaticBody2D"]
+[node name="Spaceship" type="Area2D"]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_ve4xu")
@@ -70,3 +70,5 @@ offset_bottom = 40.0
 position = Vector2(3, -3)
 color = Color(0.129412, 0.129412, 0.129412, 1)
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]

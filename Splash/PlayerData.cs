@@ -8,7 +8,7 @@ public class PlayerData{
     public PlayerData(){
         MaxOxygen = 10f;
         CurrentOxygen = 10f;
-        PlayerInventory = new Inventory(10);
+        PlayerInventory = new Inventory();
     }
 
     public float GetOxygen(){

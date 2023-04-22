@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://1kkujmksiqfc"]
+[gd_scene load_steps=5 format=3 uid="uid://cj14pavdnimoo"]
 
-[ext_resource type="Script" path="res://World/OxygenAlgae.cs" id="1_hhp05"]
-[ext_resource type="Texture2D" uid="uid://d3ok1ttm2essr" path="res://Resources/Sprites/algae_spritesheet.png" id="1_v77qp"]
+[ext_resource type="Script" path="res://World/OilVolcano.cs" id="1_huatk"]
+[ext_resource type="Texture2D" uid="uid://d3ok1ttm2essr" path="res://Resources/Sprites/algae_spritesheet.png" id="1_qd6fw"]
 
 [sub_resource type="Animation" id="Animation_yoi1s"]
 resource_name = "idle"
@@ -25,14 +25,13 @@ _data = {
 "idle": SubResource("Animation_yoi1s")
 }
 
-[node name="OxygenAlgae" type="Node2D"]
-script = ExtResource("1_hhp05")
+[node name="OilVolcano" type="Node2D"]
+script = ExtResource("1_huatk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("1_v77qp")
+texture = ExtResource("1_qd6fw")
 vframes = 8
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
