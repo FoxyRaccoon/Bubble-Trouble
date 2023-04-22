@@ -60,4 +60,14 @@ public partial class World : Node2D
     {
         GetNode<Marker2D>("WorldCenter").RotationDegrees = GetNode<Marker2D>("WorldCenter").RotationDegrees + hours * 15;
     }
+
+    public void _OnMusicPlayerFinished(){
+        GetNode<Timer>("MusicTimer").WaitTime = (float)GD.RandRange(10, 30);
+        GetNode<Timer>("MusicTimer").Start();
+    }
+
+    public void _OnMusicTimerTimeout()
+    {
+        GetNode<AudioStreamPlayer>("MusicPlayer").Play();
+    }
 }

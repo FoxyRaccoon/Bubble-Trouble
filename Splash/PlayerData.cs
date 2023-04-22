@@ -89,6 +89,10 @@ public class PlayerData{
         return IsAlive;
     }
 
+    public void Kill(){
+        IsAlive = false;
+    }
+
     public Inventory GetInventory(){
         return PlayerInventory;
     }

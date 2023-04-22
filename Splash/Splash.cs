@@ -11,7 +11,6 @@ public partial class Splash : FloatingBody
     private Vector2 GrabPoint = new Vector2(0, 0);
     private Insect Grabbed = null;
     private bool Protected = false;
-    private bool Alive = true;
     public event OutOfScreenHandler OutOfScreen;
 
     public override void _Ready()
@@ -30,7 +29,7 @@ public partial class Splash : FloatingBody
             GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("grab");
         }
 
-        if(Alive){
+        if(SplashData.IsPlayerAlive()){
             if(dash && SplashData.UseEnergy(0.5f)){
                 velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
                 GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
@@ -93,19 +92,21 @@ public partial class Splash : FloatingBody
     }
 
     public void Die(){
-        Alive = false;
+        if(SplashData.IsPlayerAlive()){
+            SplashData.Kill();
+        }
+        GetNode<AudioStreamPlayer>("/root/World/MusicPlayer").Stop();
         GetSplashData().GetInventory().Clear();
         GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("die");
     }
 
     public void Respawn(){
-        if(Alive == false){
+        if(!SplashData.IsPlayerAlive()){
             GlobalPosition = new Vector2(-160, 2150);
             SplashData = new PlayerData();
             GetNode<UI>("CanvasLayer/UI").SetPlayerData(SplashData);
             GetNode<World>("/root/World").AdddHours(6f);
             GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("die");
-            Alive = true;
         }
     }
 

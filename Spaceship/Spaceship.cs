@@ -4,11 +4,18 @@ using System;
 public partial class Spaceship : Area2D
 {
     //Resources needed to build each step of the spaceship, the resources are SHELL, OXYGEN and OIL
+    // private static int[][] ResourcesNeeded = new int[4][]{
+    //     new int[3]{1, 0, 0},//20
+    //     new int[3]{1, 20, 0},//20
+    //     new int[3]{1, 20, 10},//10
+    //     new int[3]{1, 10, 20}//10
+    // };
+
     private static int[][] ResourcesNeeded = new int[4][]{
-        new int[3]{1, 0, 0},//20
-        new int[3]{1, 20, 0},//20
-        new int[3]{1, 20, 10},//10
-        new int[3]{1, 10, 20}//10
+        new int[3]{0, 1, 0},//20
+        new int[3]{0, 1, 0},//20
+        new int[3]{0, 1, 0},//10
+        new int[3]{0, 1, 0}//10
     };
 
     private int[] CurrentResources = new int[3]{0, 0, 0};
@@ -38,6 +45,12 @@ public partial class Spaceship : Area2D
                 GetNode<AnimationPlayer>("AnimationPlayer").Play("repairing");
             }
             UpdateUI();
+        }else if(CurrentStep() == 4){
+            Splash player = (Splash)body;
+            GetNode<Splash>("/root/World/Splash").Visible = false;
+            GetNode<CanvasLayer>("/root/World/Splash/CanvasLayer").Visible = false;
+            GetNode<EndScene>("/root/World/EndScene").LaunchScene();
+            QueueFree();
         }
     }
 
