@@ -15,6 +15,7 @@ public partial class OxygenLevel : HBoxContainer
             var bubble = (Bubble)GetChild(9-i);
             if(i < oxygen){
                 bubble.GetNode<Sprite2D>("Sprite2D").Show();
+                bubble.SetFrame(0);
                 if(i == (int)oxygen){
                     bubble.SetFrame(6 - (int)(7*(oxygen - i)));
                 }

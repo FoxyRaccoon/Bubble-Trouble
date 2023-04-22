@@ -55,4 +55,9 @@ public partial class World : Node2D
     {
         return Day;
     }
+
+    public void AdddHours(float hours)
+    {
+        GetNode<Marker2D>("WorldCenter").RotationDegrees = GetNode<Marker2D>("WorldCenter").RotationDegrees + hours * 15;
+    }
 }

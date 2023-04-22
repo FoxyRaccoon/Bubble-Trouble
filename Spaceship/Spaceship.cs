@@ -35,14 +35,18 @@ public partial class Spaceship : Area2D
                 CurrentResources[2]+= player.GetSplashData().GetInventory().RemoveStack(ItemEnum.OIL, oilQuantity).GetQuantity();
             }
             if(CurrentResources[0] == ResourcesNeeded[CurrentStep()][0] && CurrentResources[1] == ResourcesNeeded[CurrentStep()][1] && CurrentResources[2] == ResourcesNeeded[CurrentStep()][2]){
-                //Replace by animation
-                GetNode<Sprite2D>("Sprite2D").Frame--;
-                CurrentResources[0] = 0;
-                CurrentResources[1] = 0;
-                CurrentResources[2] = 0;
+                GetNode<AnimationPlayer>("AnimationPlayer").Play("repairing");
             }
             UpdateUI();
         }
+    }
+
+    public void RepairFinished(){
+        GetNode<Sprite2D>("Sprite2D").Frame--;
+        CurrentResources[0] = 0;
+        CurrentResources[1] = 0;
+        CurrentResources[2] = 0;
+        UpdateUI();
     }
 
     public int CurrentStep(){

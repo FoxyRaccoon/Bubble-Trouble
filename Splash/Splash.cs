@@ -9,7 +9,9 @@ public partial class Splash : FloatingBody
     private const float GrabSpeed = 600.0f;
     private PlayerData SplashData = new PlayerData();
     private Vector2 GrabPoint = new Vector2(0, 0);
+    private Insect Grabbed = null;
     private bool Protected = false;
+    private bool Alive = true;
     public event OutOfScreenHandler OutOfScreen;
 
     public override void _Ready()
@@ -28,39 +30,46 @@ public partial class Splash : FloatingBody
             GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("grab");
         }
 
-        if(dash && SplashData.UseEnergy(0.5f)){
-            velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
-            GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
-            GetNode<GpuParticles2D>("InkParticles").Emitting = true;
-        }else{
-            if(Input.IsActionPressed("grab")){
-                if(GrabPoint != Vector2.Zero){
-                    if((GrabPoint - GlobalPosition).Length() > 10){
-                        Vector2 direction = (GrabPoint - GlobalPosition).Normalized();
-                        velocity = direction * GrabSpeed;
-                    }else{
-                        velocity = Vector2.Zero;
-                    }
-                    
-                }
+        if(Alive){
+            if(dash && SplashData.UseEnergy(0.5f)){
+                velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
+                GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
+                GetNode<GpuParticles2D>("InkParticles").Emitting = true;
+                Grabbed = null;
             }else{
-                GetNode<Marker2D>("TongueOrigin").Rotation = (GetGlobalMousePosition() - GetNode<Marker2D>("TongueOrigin").GlobalPosition).Normalized().Angle() - Rotation;
-                if(IsInWater()){
-                    velocity.Y = Mathf.MoveToward(velocity.Y, 0, WaterFriction);
-                    velocity.X = Mathf.MoveToward(velocity.X, 0, WaterFriction);
-                    if(Impulse && swimming){
-                        velocity += Vector2.FromAngle(Rotation) * WaterSpeed;
-                        GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
-                        
-                        Impulse = false;
-                        GetNode<Timer>("Timer").Start();
+                if(Grabbed == null){
+                    if(Input.IsActionPressed("grab")){
+                        if(GrabPoint != Vector2.Zero){
+                            if((GrabPoint - GlobalPosition).Length() > 10){
+                                Vector2 direction = (GrabPoint - GlobalPosition).Normalized();
+                                velocity = direction * GrabSpeed;
+                            }else{
+                                velocity = Vector2.Zero;
+                            }
+                            
+                        }
+                    }else{
+                        GetNode<Marker2D>("TongueOrigin").Rotation = (GetGlobalMousePosition() - GetNode<Marker2D>("TongueOrigin").GlobalPosition).Normalized().Angle() - Rotation;
+                        if(IsInWater()){
+                            velocity.Y = Mathf.MoveToward(velocity.Y, 0, WaterFriction);
+                            velocity.X = Mathf.MoveToward(velocity.X, 0, WaterFriction);
+                            if(Impulse && swimming){
+                                velocity += Vector2.FromAngle(Rotation) * WaterSpeed;
+                                GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
+                                
+                                Impulse = false;
+                                GetNode<Timer>("Timer").Start();
+                            }
+                        }else if(GlobalPosition.Y < -1810){
+                            velocity.Y += gravity * (float)delta;
+                            velocity.X = Mathf.MoveToward(velocity.X, 0, AirFriction);
+                        }
                     }
+                    GetNode<GpuParticles2D>("InkParticles").Emitting = false;
                 }else{
-                    velocity.Y += gravity * (float)delta;
-                    velocity.X = Mathf.MoveToward(velocity.X, 0, AirFriction);
+                    GlobalPosition = Grabbed.GlobalPosition + new Vector2(0, 50);
                 }
             }
-            GetNode<GpuParticles2D>("InkParticles").Emitting = false;
         }
         
 		Velocity = velocity;
@@ -69,7 +78,6 @@ public partial class Splash : FloatingBody
         }else{
             Rotation = Mathf.LerpAngle(Rotation, Velocity.Angle(), 0.1f);
         }
-        
         
 		MoveAndSlide();
 
@@ -85,8 +93,20 @@ public partial class Splash : FloatingBody
     }
 
     public void Die(){
-        GD.Print("You died!");
+        Alive = false;
         GetSplashData().GetInventory().Clear();
+        GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("die");
+    }
+
+    public void Respawn(){
+        if(Alive == false){
+            GlobalPosition = new Vector2(-160, 2150);
+            SplashData = new PlayerData();
+            GetNode<UI>("CanvasLayer/UI").SetPlayerData(SplashData);
+            GetNode<World>("/root/World").AdddHours(6f);
+            GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("die");
+            Alive = true;
+        }
     }
 
     public void _OnScreenExited()
@@ -128,5 +148,9 @@ public partial class Splash : FloatingBody
 
     public void Protect(bool protect){
         Protected = protect;
+    }
+
+    public void Grab(Insect insect){
+        Grabbed = insect;
     }
 }
