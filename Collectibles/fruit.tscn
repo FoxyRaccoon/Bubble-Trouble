@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bj5plvetd1xdt"]
 
 [ext_resource type="Script" path="res://Collectibles/Fruit.cs" id="1_6a6wl"]
 [ext_resource type="Texture2D" uid="uid://1q243ney0o6p" path="res://Resources/Sprites/Nature/Fruit.png" id="2_svy47"]
@@ -7,7 +7,7 @@
 radius = 8.0
 
 [node name="Fruit" type="RigidBody2D"]
-collision_layer = 20
+collision_layer = 116
 gravity_scale = 0.0
 script = ExtResource("1_6a6wl")
 

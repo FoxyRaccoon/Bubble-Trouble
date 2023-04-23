@@ -4,20 +4,12 @@ using System;
 public partial class Spaceship : Area2D
 {
     //Resources needed to build each step of the spaceship, the resources are SHELL, OXYGEN and OIL
-    // private static int[][] ResourcesNeeded = new int[4][]{
-    //     new int[3]{20, 0, 0},
-    //     new int[3]{20, 40, 0},
-    //     new int[3]{10, 40, 20},
-    //     new int[3]{10, 20, 40}
-    // };
-
     private static int[][] ResourcesNeeded = new int[4][]{
-        new int[3]{0, 1, 0},
-        new int[3]{0, 1, 0},
-        new int[3]{0, 1, 0},
-        new int[3]{0, 1, 0}
+        new int[3]{20, 0, 0},
+        new int[3]{20, 40, 0},
+        new int[3]{10, 40, 20},
+        new int[3]{10, 20, 40}
     };
-
 
     private int[] CurrentResources = new int[3]{0, 0, 0};
 

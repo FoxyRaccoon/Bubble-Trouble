@@ -12,4 +12,9 @@ public partial class MainMenu : Control
     {
         GetNode<Transition>("/root/Transition").WhiteTransition("res://World/world.tscn");
     }
+
+    public void _OnSettingsPressed()
+    {
+        GetNode<Transition>("/root/Transition").WhiteTransition("res://Menus/settings.tscn");
+    }
 }

@@ -1,14 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b00r8p3hokyxd"]
+[gd_scene load_steps=9 format=3 uid="uid://b00r8p3hokyxd"]
 
 [ext_resource type="Texture2D" uid="uid://1ta76yq1mqok" path="res://Resources/Sprites/Menus/SettingsMenu.png" id="1_22a4a"]
+[ext_resource type="Script" path="res://Menus/Settings.cs" id="1_cndaq"]
+[ext_resource type="Texture2D" uid="uid://b5pand2o0n237" path="res://Resources/Sprites/Menus/audioSymbol_scaled_6x.png" id="2_wc5n3"]
+[ext_resource type="Texture2D" uid="uid://cs8rb5vivnrvn" path="res://Resources/Sprites/Menus/ReturnButton_scaled_6x.png" id="3_yt2fj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ew8vr"]
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76o3t"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_270y2"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_q7oum"]
+events = [SubResource("InputEventKey_270y2")]
 
 [node name="Settings" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cndaq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -19,3 +36,109 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_22a4a")
 stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Main" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Main/VBoxContainer"]
+layout_mode = 2
+text = "Music volume"
+label_settings = SubResource("LabelSettings_ew8vr")
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Main/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -10.0
+max_value = 10.0
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Main/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ew8vr")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Main"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+texture = ExtResource("2_wc5n3")
+stretch_mode = 3
+
+[node name="Effects" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Effects"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Effects/VBoxContainer"]
+layout_mode = 2
+text = "Sounds volume"
+label_settings = SubResource("LabelSettings_ew8vr")
+
+[node name="SoundSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Effects/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -10.0
+max_value = 10.0
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Effects/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ew8vr")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Effects"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+texture = ExtResource("2_wc5n3")
+stretch_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("3_yt2fj")
+stretch_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_76o3t")
+shortcut = SubResource("Shortcut_q7oum")
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Main/VBoxContainer/MusicSlider" to="." method="_OnMusicSliderValueChanged"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Effects/VBoxContainer/SoundSlider" to="." method="_OnSoundSliderValueChanged"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer3/Back" to="." method="_OnBackPressed"]

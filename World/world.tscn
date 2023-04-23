@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://w3ddchneavrs"]
+[gd_scene load_steps=22 format=3 uid="uid://w3ddchneavrs"]
 
 [ext_resource type="PackedScene" uid="uid://bjlueaj2h6hmp" path="res://Splash/splash.tscn" id="1_8eu02"]
 [ext_resource type="Script" path="res://World/World.cs" id="1_v86y4"]
@@ -6,10 +6,9 @@
 [ext_resource type="PackedScene" path="res://Cutscenes/end_scene.tscn" id="3_f4jun"]
 [ext_resource type="PackedScene" path="res://World/oil_volcano.tscn" id="5_h1h2p"]
 [ext_resource type="PackedScene" uid="uid://lklud8p0cfow" path="res://World/oxygen_algae.tscn" id="5_ta0u2"]
-[ext_resource type="PackedScene" uid="uid://rym4h13v6li1" path="res://Foes/insect.tscn" id="6_0h8l7"]
 [ext_resource type="PackedScene" uid="uid://u5kruqy6a3i6" path="res://Spaceship/spaceship.tscn" id="6_0pgcc"]
 [ext_resource type="PackedScene" uid="uid://2a4ii7fqp161" path="res://World/tree.tscn" id="6_kma0a"]
-[ext_resource type="PackedScene" path="res://Collectibles/shell.tscn" id="7_cgtrm"]
+[ext_resource type="Script" path="res://World/InsectSpawner.cs" id="9_q5w8x"]
 [ext_resource type="PackedScene" uid="uid://b6bbm234t6ved" path="res://Foes/biggie.tscn" id="11_2j8ed"]
 [ext_resource type="PackedScene" uid="uid://c8hthyxlawaxe" path="res://World/protection_area.tscn" id="11_fouhn"]
 [ext_resource type="PackedScene" path="res://Cutscenes/beginning_scene.tscn" id="13_ibhxo"]
@@ -39,9 +38,9 @@ glow_blend_mode = 0
 glow_hdr_threshold = 1.2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cxrmr"]
-vertices = PackedVector2Array(-1888, -2656, -1888, -5866, 1906, -5862, 1912, -2658, 908, -2420, -759, -2131, -425, -1845, 473, -2030, -13, -1871, 244, -1855)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 5, 4, 7, 8), PackedInt32Array(8, 7, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1888, -5866, 1906, -5862, 1912, -2658, 908, -2420, 473, -2030, 244, -1855, -13, -1871, -425, -1845, -759, -2131, -1888, -2656)])
+vertices = PackedVector2Array(-543, -1844, -1055, -1987, -1496, -2246, -1474, -4207, 1228, -4325, 1338, -2632, 1010, -2262, 499, -2020, 356, -1969, 271, -1844)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8), PackedInt32Array(0, 8, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1474, -4207, 1228, -4325, 1338, -2632, 1010, -2262, 499, -2020, 356, -1969, 271, -1844, -543, -1844, -1055, -1987, -1496, -2246)])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_v86y4")
@@ -103,6 +102,12 @@ position = Vector2(458, -2880)
 rotation = 2.89875
 scale = Vector2(1, -1)
 
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="InsectSpawner" type="Node2D" parent="."]
+position = Vector2(400, -3000)
+script = ExtResource("9_q5w8x")
+
 [node name="Splash" parent="." instance=ExtResource("1_8eu02")]
 position = Vector2(-160, 2150)
 
@@ -126,23 +131,6 @@ light_mask = 2
 color = Color(0.32549, 0.32549, 0.32549, 1)
 antialiased = true
 polygon = PackedVector2Array(-691, -1872, -532, -1795, -481, -1696, -475, -1571, -463, -1419, -499.922, -1339.79, -521, -1214, -513, -1115, -455, -952, -443, -887, -467, -817, -525, -771, -568, -763, -617, -771, -685, -811, -739, -820, -784.298, -817.85, -827, -811, -857, -781, -857, -736, -875, -695, -891, -660, -885, -585, -862, -512, -825, -494, -620, -481, -517, -512, -473.817, -508.385, -455, -492, -441, -472, -441, -442, -450, -376, -476, -211, -444, -149, -441, -100, -455.759, -27.5337, -386, 70, -316, 107, -289.956, 141.379, -260, 229, -238, 335, -236, 414, -239, 492, -252, 577, -246, 620, -259, 656, -280, 683, -347, 731, -417, 770, -485, 813, -518, 844, -528, 878, -512, 908, -505, 939, -499, 997, -499, 1060, -517, 1134, -536, 1179, -584, 1214, -665, 1254, -788, 1223, -895, 1209, -1014, 1196, -1110, 1208, -1171, 1262, -1202, 1336, -1251.87, 1397.99, -1305, 1450, -1317, 1490, -1313, 1552, -1299, 1602, -1266, 1640, -1188, 1675, -1071, 1683, -959, 1678, -910, 1631, -881, 1556, -823, 1524, -713, 1504, -650.712, 1513.25, -601.847, 1540.34, -540, 1670, -468, 1877, -442, 1975, -416, 2056, -358, 2123, -242, 2164, -171, 2184, -56, 2191, 17, 2183, 99, 2152, 223, 2123, 405, 2095, 518, 2053, 570, 2006, 596, 1975, 636, 1886, 671.365, 1828.67, 847, 1669, 886, 1641, 926, 1646, 962, 1701, 958, 1770, 960, 1804, 979, 1823, 1063, 1821, 1121, 1817, 1170, 1793, 1215, 1752, 1247, 1695, 1238, 1629, 1241, 1558, 1207, 1471, 1147.15, 1348.04, 1151, 1231, 1185, 1191, 1233, 1184, 1271, 1166, 1347, 1115, 1428, 1043, 1450, 942, 1428, 823, 1391, 766, 1310, 742, 1218, 758, 1157, 799, 1102, 862, 1086, 944, 1105, 1125, 1093, 1185, 942, 1323, 825, 1475, 708, 1622, 659.461, 1644.28, 555.218, 1635.29, 509, 1613, 395, 1494, 363, 1446, 365.282, 1379.59, 418, 1209, 431, 1162, 421, 1103, 364.111, 926.702, 352, 852, 377, 685, 414, 641, 471.881, 622.574, 699, 583, 771.067, 551.947, 828, 505, 830, 421, 782.521, 114.4, 735, 65, 595.664, 32.0009, 543, 16, 487, -29, 479, -94, 515.685, -154.343, 554, -209, 940, -326, 986, -552, 1027, -600, 1105, -647, 1270, -623, 1406, -549, 1489, -522, 1586, -534, 1620, -603, 1633, -682, 1578, -759, 1420, -769, 1342, -726, 1294, -684, 1250.34, -680.333, 1130, -721, 1056, -774, 1026, -936, 860, -1174, 801, -1282, 711, -1385, 476, -1432, 390, -1456, 298, -1510, 314, -1576, 364.392, -1598.25, 482, -1594, 563, -1588, 653, -1569, 694, -1548, 713, -1544, 735, -1544, 756, -1546, 776, -1550, 796, -1556, 811, -1564, 824, -1579, 830, -1598, 834, -1617, 833, -1637, 833, -1674, 828, -1693, 821, -1709, 807, -1737, 784, -1762, 745, -1777, 699, -1787, 653, -1787, 615, -1782, 587, -1767, 549, -1753, 521, -1754, 483, -1754, 446, -1768, 400, -1800, 358, -1840, 350, -1898, 382, -1930, 555, -1989, 680, -2037, 929, -2098, 1310, -2150, 1888, -2116, 1888, 3016, -1795, 3016, -1782, -1811, -1216, -1871)
-
-[node name="Test" type="Node2D" parent="."]
-
-[node name="Shell" parent="Test" instance=ExtResource("7_cgtrm")]
-position = Vector2(68, -2305)
-
-[node name="Shell2" parent="Test" instance=ExtResource("7_cgtrm")]
-position = Vector2(101, -2438)
-
-[node name="Shell3" parent="Test" instance=ExtResource("7_cgtrm")]
-position = Vector2(-5, -2381)
-
-[node name="Shell4" parent="Test" instance=ExtResource("7_cgtrm")]
-position = Vector2(155, -2346)
-
-[node name="Insect" parent="Test" instance=ExtResource("6_0h8l7")]
-position = Vector2(-107, -2787)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 2180)
@@ -231,9 +219,12 @@ navigation_polygon = SubResource("NavigationPolygon_cxrmr")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_0ymcu")
 volume_db = -4.0
+bus = &"Music"
 
 [node name="MusicTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SettingsCanvas" type="CanvasLayer" parent="."]
 
 [connection signal="body_entered" from="Water" to="." method="_OnWaterBodyEntered"]
 [connection signal="body_exited" from="Water" to="." method="_OnWaterBodyExited"]

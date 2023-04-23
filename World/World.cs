@@ -5,7 +5,9 @@ public delegate void OnTimeChanged();
 public partial class World : Node2D
 {
     private PackedScene WaterParticles = GD.Load<PackedScene>("res://World/water_particles.tscn");
+    private PackedScene SettingsMenu = GD.Load<PackedScene>("res://Menus/settings.tscn");
     private bool Day = true;
+    private bool Pausable = true;
     public event OnTimeChanged OnNight;
     public event OnTimeChanged OnDay;
     public void _OnWaterBodyEntered(Node2D body)
@@ -47,6 +49,14 @@ public partial class World : Node2D
             GetNode<Marker2D>("WorldCenter/Sun").Visible = true;
             GetNode<Marker2D>("WorldCenter/Moon").Visible = false;
             OnDay?.Invoke();
+        }
+
+        if(Input.IsActionJustPressed("pause") && Pausable){
+            GetTree().Paused = true;
+            Pausable = false;
+            GetNode<CanvasLayer>("SettingsCanvas").AddChild((Node)SettingsMenu.Instantiate());
+        }else{
+            Pausable = true;
         }
         
     }

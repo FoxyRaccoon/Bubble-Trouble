@@ -108,4 +108,5 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_q0xqs")
 shortcut = SubResource("Shortcut_4556f")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Play" to="." method="_OnPlayPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Settings" to="." method="_OnSettingsPressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Exit" to="." method="_OnExitPressed"]

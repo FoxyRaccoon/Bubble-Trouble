@@ -18,7 +18,7 @@ public partial class Tree : StaticBody2D
         if(RandomRayCast.IsColliding()){
             var fruit = (Fruit)FruitScene.Instantiate();
             fruit.GlobalPosition = RandomRayCast.GetCollisionPoint();
-            GetParent().AddChild(fruit);
+            GetParent().GetNode("Collectibles").AddChild(fruit);
         }
     }
 
