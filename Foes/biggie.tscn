@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkm0spxuuwa7a"]
+[gd_scene load_steps=17 format=3 uid="uid://b6bbm234t6ved"]
 
-[ext_resource type="Texture2D" uid="uid://dctffw1i17nbd" path="res://Resources/Sprites/BiggieTest-Sheet.png" id="1_1mavs"]
+[ext_resource type="Texture2D" uid="uid://dctffw1i17nbd" path="res://Resources/Sprites/Foes/BiggieTest-Sheet.png" id="1_1mavs"]
 [ext_resource type="Script" path="res://Foes/Biggie.cs" id="1_g2yc1"]
-[ext_resource type="Texture2D" uid="uid://gq2ipve50fp2" path="res://Resources/Sprites/better_light.png" id="2_0dxwf"]
-[ext_resource type="Texture2D" uid="uid://81nk8gre8pa2" path="res://Resources/Sprites/light.png" id="2_r8eb7"]
-[ext_resource type="Texture2D" uid="uid://70v6yy11ufvx" path="res://Resources/Sprites/BiggieBackground-Sheet.png" id="2_tjm26"]
+[ext_resource type="Texture2D" uid="uid://gq2ipve50fp2" path="res://Resources/Sprites/Lights/better_light.png" id="2_0dxwf"]
+[ext_resource type="Texture2D" uid="uid://81nk8gre8pa2" path="res://Resources/Sprites/Lights/light.png" id="2_r8eb7"]
+[ext_resource type="Texture2D" uid="uid://70v6yy11ufvx" path="res://Resources/Sprites/Foes/BiggieBackground-Sheet.png" id="2_tjm26"]
 [ext_resource type="Script" path="res://Foes/BiggieDetection.cs" id="4_shh7d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5434o"]
@@ -254,6 +254,21 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_mj5o2"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundBiggie:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_m6itk"]
 resource_name = "RightToLeft"
 length = 4.0
@@ -328,21 +343,6 @@ tracks/5/keys = {
 "args": [],
 "method": &"ResetPosition"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_mj5o2"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundBiggie:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fhkuo"]

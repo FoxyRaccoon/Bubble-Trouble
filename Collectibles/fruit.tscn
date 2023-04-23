@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp1vy62owo2vh"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://Collectibles/Fruit.cs" id="1_6a6wl"]
-[ext_resource type="Texture2D" uid="uid://1q243ney0o6p" path="res://Resources/Sprites/Fruit.png" id="2_svy47"]
+[ext_resource type="Texture2D" uid="uid://1q243ney0o6p" path="res://Resources/Sprites/Nature/Fruit.png" id="2_svy47"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwkl1"]
 radius = 8.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yh7salmb1tk4"
-path="res://.godot/imported/AirBubble.png-72b1f1b0b51b6025b88e8842e6202593.ctex"
+uid="uid://s3u8y3iirvf2"
+path="res://.godot/imported/InsectFlying-Sheet.png-cc9e4137298c448903844b90315da50a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/AirBubble.png"
-dest_files=["res://.godot/imported/AirBubble.png-72b1f1b0b51b6025b88e8842e6202593.ctex"]
+source_file="res://Resources/Sprites/Foes/InsectFlying-Sheet.png"
+dest_files=["res://.godot/imported/InsectFlying-Sheet.png-cc9e4137298c448903844b90315da50a.ctex"]
 
 [params]
 

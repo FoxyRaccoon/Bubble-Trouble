@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b00r8p3hokyxd"]
+[gd_scene load_steps=2 format=3 uid="uid://b00r8p3hokyxd"]
+
+[ext_resource type="Texture2D" uid="uid://1ta76yq1mqok" path="res://Resources/Sprites/Menus/SettingsMenu.png" id="1_22a4a"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -15,3 +17,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_22a4a")
+stretch_mode = 5

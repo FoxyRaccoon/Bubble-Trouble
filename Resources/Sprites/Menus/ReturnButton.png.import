@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1q243ney0o6p"
-path="res://.godot/imported/Fruit.png-69a13852cee5e8ac117f0eec841f64df.ctex"
+uid="uid://od3k7x8pb2v8"
+path="res://.godot/imported/ReturnButton.png-0a5d58216017ff0aefaeb09cf8dcd0ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Fruit.png"
-dest_files=["res://.godot/imported/Fruit.png-69a13852cee5e8ac117f0eec841f64df.ctex"]
+source_file="res://Resources/Sprites/Menus/ReturnButton.png"
+dest_files=["res://.godot/imported/ReturnButton.png-0a5d58216017ff0aefaeb09cf8dcd0ab.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c36rdfcfgvqga"
-path="res://.godot/imported/GiantTree.png-dfef1fc1ad402ae454f76720a2533de8.ctex"
+uid="uid://70v6yy11ufvx"
+path="res://.godot/imported/BiggieBackground-Sheet.png-459e922eb3d41ac85443ed3e533afdf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/GiantTree.png"
-dest_files=["res://.godot/imported/GiantTree.png-dfef1fc1ad402ae454f76720a2533de8.ctex"]
+source_file="res://Resources/Sprites/Foes/BiggieBackground-Sheet.png"
+dest_files=["res://.godot/imported/BiggieBackground-Sheet.png-459e922eb3d41ac85443ed3e533afdf4.ctex"]
 
 [params]
 

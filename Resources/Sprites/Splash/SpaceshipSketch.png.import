@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dctffw1i17nbd"
-path="res://.godot/imported/BiggieTest-Sheet.png-362dbf27a5a801361614a333e6ad9c13.ctex"
+uid="uid://b7nwlqquh1dx7"
+path="res://.godot/imported/SpaceshipSketch.png-fe78f7d8278742b3b5227bd41bd25598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/BiggieTest-Sheet.png"
-dest_files=["res://.godot/imported/BiggieTest-Sheet.png-362dbf27a5a801361614a333e6ad9c13.ctex"]
+source_file="res://Resources/Sprites/Splash/SpaceshipSketch.png"
+dest_files=["res://.godot/imported/SpaceshipSketch.png-fe78f7d8278742b3b5227bd41bd25598.ctex"]
 
 [params]
 

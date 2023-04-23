@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhpkay0fknvuq"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://Collectibles/Oxygen.cs" id="1_wrkng"]
-[ext_resource type="Texture2D" uid="uid://yh7salmb1tk4" path="res://Resources/Sprites/AirBubble.png" id="2_ckdxr"]
+[ext_resource type="Texture2D" uid="uid://yh7salmb1tk4" path="res://Resources/Sprites/Nature/AirBubble.png" id="2_ckdxr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pb3u3"]
 radius = 4.0

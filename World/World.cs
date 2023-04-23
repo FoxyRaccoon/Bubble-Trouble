@@ -15,7 +15,7 @@ public partial class World : Node2D
             ((FloatingBody)body).SetInWater(true);
             GpuParticles2D localInstance = (GpuParticles2D)WaterParticles.Instantiate();
             localInstance.Position = new Vector2(body.GlobalPosition.X, -1800);
-            AddChild(localInstance);
+            CallDeferred("add_child", localInstance);
         }
     }
 
@@ -26,7 +26,7 @@ public partial class World : Node2D
             ((FloatingBody)body).SetInWater(false);
             GpuParticles2D localInstance = (GpuParticles2D)WaterParticles.Instantiate();
             localInstance.Position = new Vector2(body.GlobalPosition.X, -1800);
-            AddChild(localInstance);
+            CallDeferred("add_child", localInstance);
         }
     }
 

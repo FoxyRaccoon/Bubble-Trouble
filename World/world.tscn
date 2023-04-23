@@ -1,19 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxvlinku1s33o"]
+[gd_scene load_steps=23 format=3 uid="uid://w3ddchneavrs"]
 
-[ext_resource type="PackedScene" uid="uid://b128l4cf8d763" path="res://Splash/splash.tscn" id="1_8eu02"]
+[ext_resource type="PackedScene" uid="uid://bjlueaj2h6hmp" path="res://Splash/splash.tscn" id="1_8eu02"]
 [ext_resource type="Script" path="res://World/World.cs" id="1_v86y4"]
 [ext_resource type="Script" path="res://World/FollowingCamera.cs" id="3_a0ywa"]
-[ext_resource type="PackedScene" uid="uid://gm3xoept3h03" path="res://Cutscenes/end_scene.tscn" id="3_f4jun"]
-[ext_resource type="PackedScene" uid="uid://cj14pavdnimoo" path="res://World/oil_volcano.tscn" id="5_h1h2p"]
-[ext_resource type="PackedScene" uid="uid://1kkujmksiqfc" path="res://World/oxygen_algae.tscn" id="5_ta0u2"]
+[ext_resource type="PackedScene" path="res://Cutscenes/end_scene.tscn" id="3_f4jun"]
+[ext_resource type="PackedScene" path="res://World/oil_volcano.tscn" id="5_h1h2p"]
+[ext_resource type="PackedScene" uid="uid://lklud8p0cfow" path="res://World/oxygen_algae.tscn" id="5_ta0u2"]
 [ext_resource type="PackedScene" uid="uid://rym4h13v6li1" path="res://Foes/insect.tscn" id="6_0h8l7"]
-[ext_resource type="PackedScene" uid="uid://br13xk3fvk12e" path="res://Spaceship/spaceship.tscn" id="6_0pgcc"]
-[ext_resource type="PackedScene" uid="uid://dddxdee2r2x5c" path="res://World/tree.tscn" id="6_kma0a"]
-[ext_resource type="PackedScene" uid="uid://bxg22pcqf73nb" path="res://Collectibles/shell.tscn" id="7_cgtrm"]
-[ext_resource type="PackedScene" uid="uid://bkm0spxuuwa7a" path="res://Foes/biggie.tscn" id="11_2j8ed"]
+[ext_resource type="PackedScene" uid="uid://u5kruqy6a3i6" path="res://Spaceship/spaceship.tscn" id="6_0pgcc"]
+[ext_resource type="PackedScene" uid="uid://2a4ii7fqp161" path="res://World/tree.tscn" id="6_kma0a"]
+[ext_resource type="PackedScene" path="res://Collectibles/shell.tscn" id="7_cgtrm"]
+[ext_resource type="PackedScene" uid="uid://b6bbm234t6ved" path="res://Foes/biggie.tscn" id="11_2j8ed"]
 [ext_resource type="PackedScene" uid="uid://c8hthyxlawaxe" path="res://World/protection_area.tscn" id="11_fouhn"]
-[ext_resource type="Texture2D" uid="uid://81nk8gre8pa2" path="res://Resources/Sprites/light.png" id="12_ucr8n"]
-[ext_resource type="PackedScene" uid="uid://couv0uskd2872" path="res://Cutscenes/beginning_scene.tscn" id="13_ibhxo"]
+[ext_resource type="PackedScene" path="res://Cutscenes/beginning_scene.tscn" id="13_ibhxo"]
+[ext_resource type="Texture2D" uid="uid://81nk8gre8pa2" path="res://Resources/Sprites/Lights/light.png" id="13_wyce4"]
 [ext_resource type="AudioStream" uid="uid://pvbrog8l53m8" path="res://Resources/Sounds/Theme/TestSong-Squiddy.mp3" id="14_0ymcu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3xcn"]
@@ -185,7 +185,7 @@ color = Color(1, 1, 0.85098, 1)
 energy = 0.8
 range_item_cull_mask = 2
 shadow_item_cull_mask = 2
-texture = ExtResource("12_ucr8n")
+texture = ExtResource("13_wyce4")
 texture_scale = 5.0
 
 [node name="PointLight2D" type="PointLight2D" parent="WorldCenter/Sun"]
@@ -194,7 +194,7 @@ energy = 1.2
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 0.8
-texture = ExtResource("12_ucr8n")
+texture = ExtResource("13_wyce4")
 texture_scale = 5.0
 
 [node name="Moon" type="Marker2D" parent="WorldCenter"]
@@ -206,7 +206,7 @@ energy = 0.6
 blend_mode = 2
 range_item_cull_mask = 2
 shadow_item_cull_mask = 2
-texture = ExtResource("12_ucr8n")
+texture = ExtResource("13_wyce4")
 texture_scale = 5.0
 
 [node name="PointLight2D" type="PointLight2D" parent="WorldCenter/Moon"]
@@ -216,7 +216,7 @@ blend_mode = 2
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 1.0
-texture = ExtResource("12_ucr8n")
+texture = ExtResource("13_wyce4")
 texture_scale = 5.0
 
 [node name="ProtectionArea" parent="." instance=ExtResource("11_fouhn")]

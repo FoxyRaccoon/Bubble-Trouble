@@ -1,7 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://br13xk3fvk12e"]
+[gd_scene load_steps=18 format=3 uid="uid://u5kruqy6a3i6"]
 
-[ext_resource type="Texture2D" uid="uid://c83fyibpxx6r1" path="res://Resources/Sprites/SpaceshipSketch-Sheet.png" id="1_j3afj"]
+[ext_resource type="Texture2D" uid="uid://c83fyibpxx6r1" path="res://Resources/Sprites/Splash/SpaceshipSketch-Sheet.png" id="1_j3afj"]
 [ext_resource type="Script" path="res://Spaceship/Spaceship.cs" id="1_ve4xu"]
+[ext_resource type="Texture2D" uid="uid://egt04nxl2lwb" path="res://Resources/Sprites/Nature/shell.png" id="3_c52ku"]
+[ext_resource type="Texture2D" uid="uid://yh7salmb1tk4" path="res://Resources/Sprites/Nature/AirBubble.png" id="4_44lqq"]
+[ext_resource type="Texture2D" uid="uid://didiwahxni0pn" path="res://Resources/Sprites/Nature/OilDrop.png" id="5_ty4xe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_boup4"]
 radius = 50.0
@@ -162,10 +165,9 @@ color = Color(1, 1, 1, 0.329412)
 offset_right = 6.0
 offset_bottom = 40.0
 
-[node name="Polygon2D2" type="Polygon2D" parent="ShellBar"]
-position = Vector2(3, -3)
-color = Color(1, 0.839216, 1, 1)
-polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+[node name="Sprite2D" type="Sprite2D" parent="ShellBar"]
+position = Vector2(3, -4)
+texture = ExtResource("3_c52ku")
 
 [node name="OxygenBar" type="Node2D" parent="."]
 position = Vector2(64, -20)
@@ -179,10 +181,9 @@ color = Color(1, 1, 1, 0.329412)
 offset_right = 6.0
 offset_bottom = 40.0
 
-[node name="Polygon2D2" type="Polygon2D" parent="OxygenBar"]
-position = Vector2(3, -3)
-color = Color(0.746525, 0.839877, 1, 1)
-polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+[node name="Sprite2D" type="Sprite2D" parent="OxygenBar"]
+position = Vector2(3, -4)
+texture = ExtResource("4_44lqq")
 
 [node name="OilBar" type="Node2D" parent="."]
 position = Vector2(74, -20)
@@ -196,10 +197,9 @@ color = Color(1, 1, 1, 0.329412)
 offset_right = 6.0
 offset_bottom = 40.0
 
-[node name="Polygon2D2" type="Polygon2D" parent="OilBar"]
-position = Vector2(3, -3)
-color = Color(0.129412, 0.129412, 0.129412, 1)
-polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+[node name="Sprite2D" type="Sprite2D" parent="OilBar"]
+position = Vector2(3, -4)
+texture = ExtResource("5_ty4xe")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false

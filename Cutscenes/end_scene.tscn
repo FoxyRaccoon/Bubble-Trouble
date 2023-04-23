@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://gm3xoept3h03"]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://Cutscenes/EndScene.cs" id="1_k0ekm"]
-[ext_resource type="Texture2D" uid="uid://b7nwlqquh1dx7" path="res://Resources/Sprites/SpaceshipSketch.png" id="2_lh67b"]
+[ext_resource type="Texture2D" uid="uid://b7nwlqquh1dx7" path="res://Resources/Sprites/Splash/SpaceshipSketch.png" id="2_lh67b"]
 
 [sub_resource type="Animation" id="Animation_que5j"]
 length = 0.001

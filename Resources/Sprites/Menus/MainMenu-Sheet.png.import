@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ok1ttm2essr"
-path="res://.godot/imported/algae_spritesheet.png-55774bd47bbe6ebdad0e554aa466f7cb.ctex"
+uid="uid://0bod4g8f6rbn"
+path="res://.godot/imported/MainMenu-Sheet.png-5c95ac5909bb7cdf81c20a6cbc33308d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/algae_spritesheet.png"
-dest_files=["res://.godot/imported/algae_spritesheet.png-55774bd47bbe6ebdad0e554aa466f7cb.ctex"]
+source_file="res://Resources/Sprites/Menus/MainMenu-Sheet.png"
+dest_files=["res://.godot/imported/MainMenu-Sheet.png-5c95ac5909bb7cdf81c20a6cbc33308d.ctex"]
 
 [params]
 

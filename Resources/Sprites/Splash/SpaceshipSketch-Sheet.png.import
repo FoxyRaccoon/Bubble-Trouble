@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://81nk8gre8pa2"
-path="res://.godot/imported/light.png-09cfa27b92c4319ea8dce372745366bf.ctex"
+uid="uid://c83fyibpxx6r1"
+path="res://.godot/imported/SpaceshipSketch-Sheet.png-e9ccc4d3fe54ea520bf1948c0a4532b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/light.png"
-dest_files=["res://.godot/imported/light.png-09cfa27b92c4319ea8dce372745366bf.ctex"]
+source_file="res://Resources/Sprites/Splash/SpaceshipSketch-Sheet.png"
+dest_files=["res://.godot/imported/SpaceshipSketch-Sheet.png-e9ccc4d3fe54ea520bf1948c0a4532b8.ctex"]
 
 [params]
 

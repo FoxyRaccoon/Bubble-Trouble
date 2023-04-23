@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://70v6yy11ufvx"
-path="res://.godot/imported/BiggieBackground-Sheet.png-26efe8247be261b8fd1d8a0b929ef497.ctex"
+uid="uid://bikqunbnwokeo"
+path="res://.godot/imported/AlgaeTest-Sheet.png-0af5f1f0dec31b6bd8322874c2a11cb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/BiggieBackground-Sheet.png"
-dest_files=["res://.godot/imported/BiggieBackground-Sheet.png-26efe8247be261b8fd1d8a0b929ef497.ctex"]
+source_file="res://Resources/Sprites/Nature/AlgaeTest-Sheet.png"
+dest_files=["res://.godot/imported/AlgaeTest-Sheet.png-0af5f1f0dec31b6bd8322874c2a11cb0.ctex"]
 
 [params]
 

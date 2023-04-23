@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://b128l4cf8d763"]
+[gd_scene load_steps=17 format=3 uid="uid://bjlueaj2h6hmp"]
 
 [ext_resource type="Script" path="res://Splash/Splash.cs" id="1_a7ixu"]
-[ext_resource type="Texture2D" uid="uid://r7pvn71q1k2c" path="res://Resources/Sprites/SquidSketch02-Sheet.png" id="2_qptjf"]
+[ext_resource type="Texture2D" uid="uid://r7pvn71q1k2c" path="res://Resources/Sprites/Splash/SquidSketch02-Sheet.png" id="2_q2gkn"]
 [ext_resource type="PackedScene" uid="uid://co1vamo3bbvya" path="res://UI/ui.tscn" id="3_76n6b"]
 
 [sub_resource type="Curve" id="Curve_gyr82"]
@@ -267,7 +267,7 @@ wait_time = 1.1
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qptjf")
+texture = ExtResource("2_q2gkn")
 hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

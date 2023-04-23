@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://h7t3hbvqykuw"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Texture2D" uid="uid://bbsnfiyqy5vik" path="res://Resources/Sprites/bubblesheet.png" id="1_74j3x"]
+[ext_resource type="Texture2D" uid="uid://bbsnfiyqy5vik" path="res://Resources/Sprites/UI/bubblesheet.png" id="1_74j3x"]
 [ext_resource type="Script" path="res://UI/Bubble.cs" id="1_etk4f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anj7h"]

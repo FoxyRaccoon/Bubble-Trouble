@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gq2ipve50fp2"
-path="res://.godot/imported/better_light.png-90f48d1ffd1d5bef3b3fa092abb9a61b.ctex"
+uid="uid://bbsnfiyqy5vik"
+path="res://.godot/imported/bubblesheet.png-1a7f1ae1f73745a7066e1e5fd7e6dc64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/better_light.png"
-dest_files=["res://.godot/imported/better_light.png-90f48d1ffd1d5bef3b3fa092abb9a61b.ctex"]
+source_file="res://Resources/Sprites/UI/bubblesheet.png"
+dest_files=["res://.godot/imported/bubblesheet.png-1a7f1ae1f73745a7066e1e5fd7e6dc64.ctex"]
 
 [params]
 

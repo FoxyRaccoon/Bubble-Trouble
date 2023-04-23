@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0usenvw7pt6g"
-path="res://.godot/imported/VolcanoTest-Sheet.png-8c560daa5b70bcd92b46086903e0f2f0.ctex"
+uid="uid://yh7salmb1tk4"
+path="res://.godot/imported/AirBubble.png-6155135878c8047ca0cd23c079d38417.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/VolcanoTest-Sheet.png"
-dest_files=["res://.godot/imported/VolcanoTest-Sheet.png-8c560daa5b70bcd92b46086903e0f2f0.ctex"]
+source_file="res://Resources/Sprites/Nature/AirBubble.png"
+dest_files=["res://.godot/imported/AirBubble.png-6155135878c8047ca0cd23c079d38417.ctex"]
 
 [params]
 

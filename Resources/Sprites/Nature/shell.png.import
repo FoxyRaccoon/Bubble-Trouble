@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwqspogmdltof"
-path="res://.godot/imported/better_light-transformed.png-8c5324b4ab1a81b4e672de0327bbc98f.ctex"
+uid="uid://egt04nxl2lwb"
+path="res://.godot/imported/shell.png-09de2212d37d22342afa65f2b5b36a1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/better_light-transformed.png"
-dest_files=["res://.godot/imported/better_light-transformed.png-8c5324b4ab1a81b4e672de0327bbc98f.ctex"]
+source_file="res://Resources/Sprites/Nature/shell.png"
+dest_files=["res://.godot/imported/shell.png-09de2212d37d22342afa65f2b5b36a1a.ctex"]
 
 [params]
 

@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dddxdee2r2x5c"]
+[gd_scene load_steps=3 format=3 uid="uid://2a4ii7fqp161"]
 
 [ext_resource type="Script" path="res://World/Tree.cs" id="1_ig2xm"]
-[ext_resource type="Texture2D" uid="uid://c36rdfcfgvqga" path="res://Resources/Sprites/GiantTree.png" id="1_x7uvk"]
+[ext_resource type="Texture2D" uid="uid://c36rdfcfgvqga" path="res://Resources/Sprites/Nature/GiantTree.png" id="2_fg4w0"]
 
 [node name="Tree" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource("1_ig2xm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_x7uvk")
+texture = ExtResource("2_fg4w0")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(285, 1049, 216, 983, 66, 869, -25, 792, -30, 649, -30, 476, 20, 380, 34, 304, 15, 176, 36, -475, -30, -682, -72, -858, -39, -1143, -90, -949, -112, -896, -107, -861, -109, -815, -84, -571, -41, -489, -58, -377, -103, -168, -87, 9, -153, 168, -153, 349, -215, 561, -263, 841, -420, 865, -515, 970, -555, 1090, -370, 1097, 17, 1104)
@@ -26,7 +26,7 @@ polygon = PackedVector2Array(-355, 848, -265, 839, -213, 543, -158, 339, -156, 1
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(-130, 972)
-texture = ExtResource("1_x7uvk")
+texture = ExtResource("2_fg4w0")
 region_enabled = true
 region_rect = Rect2(0, 1944, 840, 256)
 

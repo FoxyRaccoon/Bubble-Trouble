@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgjwqfpqy0qgj"]
+[gd_scene load_steps=10 format=3 uid="uid://dda6n61tidos"]
 
 [ext_resource type="Script" path="res://Menus/MainMenu.cs" id="1_hrpwy"]
-[ext_resource type="Texture2D" uid="uid://0bod4g8f6rbn" path="res://Resources/Sprites/MainMenu-Sheet.png" id="1_lvtsm"]
+[ext_resource type="Texture2D" uid="uid://0bod4g8f6rbn" path="res://Resources/Sprites/Menus/MainMenu-Sheet.png" id="2_2hiqk"]
 
 [sub_resource type="Animation" id="Animation_siu1l"]
 resource_name = "idle"
@@ -50,7 +50,7 @@ script = ExtResource("1_hrpwy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(768, 432)
 scale = Vector2(2, 2)
-texture = ExtResource("1_lvtsm")
+texture = ExtResource("2_2hiqk")
 hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

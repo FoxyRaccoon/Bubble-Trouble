@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://egt04nxl2lwb"
-path="res://.godot/imported/shell.png-c3607a964448fe94758bc8a14578209c.ctex"
+uid="uid://didiwahxni0pn"
+path="res://.godot/imported/OilDrop.png-f0069498db4e5cc2aa5ae8ff8744b444.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/shell.png"
-dest_files=["res://.godot/imported/shell.png-c3607a964448fe94758bc8a14578209c.ctex"]
+source_file="res://Resources/Sprites/Nature/OilDrop.png"
+dest_files=["res://.godot/imported/OilDrop.png-f0069498db4e5cc2aa5ae8ff8744b444.ctex"]
 
 [params]
 

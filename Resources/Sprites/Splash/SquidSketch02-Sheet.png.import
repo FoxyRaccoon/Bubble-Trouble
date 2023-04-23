@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dooxbbnn4pdcj"
-path="res://.godot/imported/ButtonsExtra.png-adecb7da547659c85a88a52e60285a77.ctex"
+uid="uid://r7pvn71q1k2c"
+path="res://.godot/imported/SquidSketch02-Sheet.png-6597f5f5a225c008562d4a1b6e2146b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/ButtonsExtra.png"
-dest_files=["res://.godot/imported/ButtonsExtra.png-adecb7da547659c85a88a52e60285a77.ctex"]
+source_file="res://Resources/Sprites/Splash/SquidSketch02-Sheet.png"
+dest_files=["res://.godot/imported/SquidSketch02-Sheet.png-6597f5f5a225c008562d4a1b6e2146b1.ctex"]
 
 [params]
 

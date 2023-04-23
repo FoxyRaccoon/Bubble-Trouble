@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj14pavdnimoo"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://World/OilVolcano.cs" id="1_huatk"]
-[ext_resource type="Texture2D" uid="uid://c0usenvw7pt6g" path="res://Resources/Sprites/VolcanoTest-Sheet.png" id="2_bv33h"]
+[ext_resource type="Texture2D" uid="uid://c0usenvw7pt6g" path="res://Resources/Sprites/Nature/VolcanoTest-Sheet.png" id="2_bv33h"]
 
 [sub_resource type="Animation" id="Animation_yoi1s"]
 resource_name = "idle"

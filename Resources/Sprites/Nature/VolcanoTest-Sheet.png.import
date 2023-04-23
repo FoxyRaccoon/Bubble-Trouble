@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r7pvn71q1k2c"
-path="res://.godot/imported/SquidSketch02-Sheet.png-2b6f999f8f94aa16aeb214cb2ff817be.ctex"
+uid="uid://c0usenvw7pt6g"
+path="res://.godot/imported/VolcanoTest-Sheet.png-6cbae57c732d8395656270c97846d1e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/SquidSketch02-Sheet.png"
-dest_files=["res://.godot/imported/SquidSketch02-Sheet.png-2b6f999f8f94aa16aeb214cb2ff817be.ctex"]
+source_file="res://Resources/Sprites/Nature/VolcanoTest-Sheet.png"
+dest_files=["res://.godot/imported/VolcanoTest-Sheet.png-6cbae57c732d8395656270c97846d1e3.ctex"]
 
 [params]
 
