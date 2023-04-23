@@ -15,10 +15,12 @@ public partial class OilVolcano : Node2D
         for(int i = 0; i < 4; i++){
             if(RNG.Randf() < 0.2f){
                 var oil = (Oil)OilScene.Instantiate();
-                oil.GlobalPosition = GlobalPosition + new Vector2(RNG.RandfRange(-16, 16), RNG.RandfRange(-32, -16));
-                GetParent().AddChild(oil);
+                oil.GlobalPosition = new Vector2(RNG.RandfRange(-8, 8), RNG.RandfRange(-16, -8));
+                oil.ShowBehindParent = true;
+                AddChild(oil);
             }
         }
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("push");
         
     }
 }

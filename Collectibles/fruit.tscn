@@ -1,19 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp1vy62owo2vh"]
+[gd_scene load_steps=4 format=3 uid="uid://bp1vy62owo2vh"]
 
 [ext_resource type="Script" path="res://Collectibles/Fruit.cs" id="1_6a6wl"]
+[ext_resource type="Texture2D" uid="uid://1q243ney0o6p" path="res://Resources/Sprites/Fruit.png" id="2_svy47"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0skx"]
-radius = 3.0
-height = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwkl1"]
+radius = 8.0
 
 [node name="Fruit" type="RigidBody2D"]
 collision_layer = 20
 gravity_scale = 0.0
 script = ExtResource("1_6a6wl")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 0.776471, 0.262745, 1)
-polygon = PackedVector2Array(-2, 0, -2, 2, 0, 3, 2, 2, 2, 0, 2, -1, 1, -2, 0, -1, -1, -2, -2, -1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_n0skx")
+shape = SubResource("CircleShape2D_jwkl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_svy47")

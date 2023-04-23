@@ -1,12 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://dddxdee2r2x5c"]
+[gd_scene load_steps=3 format=3 uid="uid://dddxdee2r2x5c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dmkt"]
-size = Vector2(43, 8)
+[ext_resource type="Script" path="res://World/Tree.cs" id="1_ig2xm"]
+[ext_resource type="Texture2D" uid="uid://c36rdfcfgvqga" path="res://Resources/Sprites/GiantTree.png" id="1_x7uvk"]
 
 [node name="Tree" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_ig2xm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x7uvk")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(285, 1049, 216, 983, 66, 869, -25, 792, -30, 649, -30, 476, 20, 380, 34, 304, 15, 176, 36, -475, -30, -682, -72, -858, -39, -1143, -90, -949, -112, -896, -107, -861, -109, -815, -84, -571, -41, -489, -58, -377, -103, -168, -87, 9, -153, 168, -153, 349, -215, 561, -263, 841, -420, 865, -515, 970, -555, 1090, -370, 1097, 17, 1104)
+
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(11.5, -6)
-shape = SubResource("RectangleShape2D_6dmkt")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-11, 803, 3, 748, 1, 612, 12, 588, 88, 571, 152, 586, 222, 611, 257, 574, 367, 575, 445, 591, 414, 579, 304, 567, 251, 567, 220, 602, 146, 576, 86, 560, 11, 578, -5, 501, 38, 418, 57, 348, 59, 295, 96, 304, 125, 332, 257, 337, 309, 360, 362, 336, 308, 351, 255, 326, 140, 324, 78, 282, 62, 260, 41, 181, 29, 109, 44, 55, 77, 36, 176, 74, 265, 72, 331, 104, 389, 66, 415, 43, 335, 95, 265, 63, 176, 65, 76, 24, 32, 20, 39, -113, 37, -170, 45, -207, 85, -176, 146, -130, 242, -172, 306, -155, 352, -183, 302, -164, 242, -179, 196, -158, 149, -141, 94, -180, 57, -220, 44, -265, 67, -429, 67, -502, 85, -524, 152, -487, 193, -476, 252, -427, 292, -432, 400, -491, 440, -488, 395, -499, 329, -460, 294, -440, 252, -438, 202, -479, 157, -495, 119, -516, 93, -530, 43, -521, 22, -571, 23, -622, -8, -679, -4, -707, 29, -730, 75, -756, 103, -768, 121, -780, 139, -804, 186, -784, 296, -782, 339, -784, 389, -814, 340, -792, 292, -787, 189, -793, 132, -811, 109, -781, 61, -757, -12, -709, -37, -740, -46, -799, -35, -830, -4, -860, 29, -901, 86, -972, 132, -1035, 158, -1062, 211, -1082, 152, -1065, 94, -994, -22, -852, -54, -815, -40, -744, -13, -668, 17, -618, 12, -565, 52, -482, 60, -416, 33, -287, 39, -221, 31, -172, 27, 58, 23, 88, 46, 269, 38, 376, -15, 489)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-355, 848, -265, 839, -213, 543, -158, 339, -156, 166, -94, 2, -106, -175, -48, -482, -93, -559, -95, -616, -118, -664, -98, -689, -121, -774, -123, -858, -192, -931, -211, -1009, -334, -1041, -433, -1050, -384, -1037, -317, -1030, -216, -997, -208, -932, -162, -890, -135, -841, -134, -777, -116, -697, -137, -675, -191, -722, -274, -726, -344, -719, -389, -754, -425, -753, -479, -765, -443, -752, -392, -746, -346, -710, -276, -718, -196, -713, -130, -659, -105, -615, -99, -551, -60, -495, -70, -457, -119, -422, -160, -423, -218, -430, -306, -403, -379, -395, -443, -383, -468, -417, -496, -427, -472, -407, -445, -376, -370, -388, -302, -396, -215, -420, -161, -417, -117, -411, -82, -442, -78, -409, -87, -320, -124, -184, -137, -208, -218, -203, -235, -199, -293, -176, -345, -203, -432, -172, -487, -132, -525, -139, -483, -124, -430, -164, -342, -194, -296, -169, -232, -191, -179, -200, -138, -194, -123, -147, -116, 12, -139, 64, -182, 21, -251, 36, -329, 16, -356, 4, -385, 9, -408, 28, -361, 11, -323, 30, -254, 46, -179, 33, -167, 54, -141, 85, -174, 202, -168, 338, -204, 268, -286, 258, -327, 239, -390, 240, -449, 243, -472, 226, -454, 254, -383, 250, -327, 244, -292, 268, -236, 269, -212, 279, -176, 358, -200, 437, -219, 482, -230, 533, -269, 497, -331, 506, -387, 511, -427, 474, -471, 458, -526, 449, -541, 460, -519, 457, -467, 466, -434, 484, -400, 516, -341, 517, -281, 501, -260, 518, -249, 547, -275, 706, -289, 807, -310, 839)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-130, 972)
+texture = ExtResource("1_x7uvk")
+region_enabled = true
+region_rect = Rect2(0, 1944, 840, 256)
+
+[node name="RayCastGroup" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="RayCastGroup"]
+position = Vector2(75, -594)
+target_position = Vector2(0, 800)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="RayCastGroup"]
+position = Vector2(100, -1410)
+target_position = Vector2(0, 800)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="RayCastGroup"]
+position = Vector2(44, -827)
+target_position = Vector2(0, 800)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="RayCastGroup"]
+position = Vector2(313, -268)
+target_position = Vector2(0, 800)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D5" type="RayCast2D" parent="RayCastGroup"]
+position = Vector2(342, -88)
+target_position = Vector2(0, 800)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D6" type="RayCast2D" parent="RayCastGroup"]
+position = Vector2(281, 211)
+target_position = Vector2(0, 800)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D7" type="RayCast2D" parent="RayCastGroup"]
+position = Vector2(163, 373)
+target_position = Vector2(0, 800)
+collision_mask = 4
+collide_with_areas = true

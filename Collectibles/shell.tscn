@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxg22pcqf73nb"]
+[gd_scene load_steps=4 format=3 uid="uid://bxg22pcqf73nb"]
 
 [ext_resource type="Script" path="res://Collectibles/Shell.cs" id="1_ej42q"]
+[ext_resource type="Texture2D" uid="uid://egt04nxl2lwb" path="res://Resources/Sprites/shell.png" id="2_xceqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmjh4"]
 radius = 4.0
@@ -13,6 +14,5 @@ script = ExtResource("1_ej42q")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bmjh4")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 0.580392, 0.784314, 1)
-polygon = PackedVector2Array(-3, -2, -4, 0, -2, 3, 2, 3, 4, 0, 3, -2, 0, -4)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xceqp")

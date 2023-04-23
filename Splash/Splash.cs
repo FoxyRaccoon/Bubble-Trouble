@@ -125,6 +125,11 @@ public partial class Splash : FloatingBody
         GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("grab");
     }
 
+    public void _OnGrabArea(Area2D area){
+        GrabPoint = GetNode<Area2D>("TongueOrigin/Tongue").GlobalPosition;
+        GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("grab");
+    }
+
     public void FinishGrab(){
         GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("grab");
     }

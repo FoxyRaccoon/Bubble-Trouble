@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhpkay0fknvuq"]
+[gd_scene load_steps=4 format=3 uid="uid://dhpkay0fknvuq"]
 
 [ext_resource type="Script" path="res://Collectibles/Oxygen.cs" id="1_wrkng"]
+[ext_resource type="Texture2D" uid="uid://yh7salmb1tk4" path="res://Resources/Sprites/AirBubble.png" id="2_ckdxr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_prs6w"]
-size = Vector2(4, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pb3u3"]
+radius = 4.0
 
 [node name="Oxygen" type="RigidBody2D"]
 collision_layer = 20
@@ -11,8 +12,7 @@ gravity_scale = -0.01
 script = ExtResource("1_wrkng")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_prs6w")
+shape = SubResource("CircleShape2D_pb3u3")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.746525, 0.839877, 1, 1)
-polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ckdxr")
