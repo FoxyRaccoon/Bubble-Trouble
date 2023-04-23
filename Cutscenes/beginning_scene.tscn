@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://couv0uskd2872"]
 
 [ext_resource type="Script" path="res://Cutscenes/BeginningScene.cs" id="1_d6vae"]
-[ext_resource type="Texture2D" uid="uid://c83fyibpxx6r1" path="res://Resources/Sprites/SpaceshipSketch-Sheet.png" id="1_sy6g6"]
+[ext_resource type="Texture2D" uid="uid://b7nwlqquh1dx7" path="res://Resources/Sprites/SpaceshipSketch.png" id="2_6kess"]
 
 [sub_resource type="Gradient" id="Gradient_pfu1w"]
 offsets = PackedFloat32Array(0, 0.662461)
@@ -156,8 +156,7 @@ fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, -16)
-texture = ExtResource("1_sy6g6")
-hframes = 5
+texture = ExtResource("2_6kess")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 2.0
