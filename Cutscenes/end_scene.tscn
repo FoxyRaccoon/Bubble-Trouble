@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://co2as2iw7hqe5"]
 
 [ext_resource type="Script" path="res://Cutscenes/EndScene.cs" id="1_k0ekm"]
 [ext_resource type="Texture2D" uid="uid://b7nwlqquh1dx7" path="res://Resources/Sprites/Splash/SpaceshipSketch.png" id="2_lh67b"]
@@ -134,7 +134,7 @@ font_size = 28
 font_size = 20
 
 [node name="EndScene" type="Node2D"]
-position = Vector2(-56, 2137)
+position = Vector2(-2000, -4000)
 script = ExtResource("1_k0ekm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -143,7 +143,7 @@ texture = ExtResource("2_lh67b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
-zoom = Vector2(1.4, 1.4)
+zoom = Vector2(0.6, 0.6)
 limit_left = -1500
 limit_top = -5000
 

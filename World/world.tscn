@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bjlueaj2h6hmp" path="res://Splash/splash.tscn" id="1_8eu02"]
 [ext_resource type="Script" path="res://World/World.cs" id="1_v86y4"]
 [ext_resource type="Script" path="res://World/FollowingCamera.cs" id="3_a0ywa"]
-[ext_resource type="PackedScene" path="res://Cutscenes/end_scene.tscn" id="3_f4jun"]
-[ext_resource type="PackedScene" path="res://World/oil_volcano.tscn" id="5_h1h2p"]
+[ext_resource type="PackedScene" uid="uid://co2as2iw7hqe5" path="res://Cutscenes/end_scene.tscn" id="3_f4jun"]
+[ext_resource type="PackedScene" uid="uid://b32ga4iedvjfc" path="res://World/oil_volcano.tscn" id="5_h1h2p"]
 [ext_resource type="PackedScene" uid="uid://lklud8p0cfow" path="res://World/oxygen_algae.tscn" id="5_ta0u2"]
 [ext_resource type="PackedScene" uid="uid://u5kruqy6a3i6" path="res://Spaceship/spaceship.tscn" id="6_0pgcc"]
 [ext_resource type="PackedScene" uid="uid://2a4ii7fqp161" path="res://World/tree.tscn" id="6_kma0a"]
@@ -164,6 +164,7 @@ environment = SubResource("Environment_co85h")
 color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [node name="WorldCenter" type="Marker2D" parent="."]
+rotation = 3.31613
 
 [node name="Sun" type="Marker2D" parent="WorldCenter"]
 position = Vector2(0, -6000)

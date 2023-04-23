@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cevwxae7c04wg"]
+[gd_scene load_steps=6 format=3 uid="uid://cevwxae7c04wg"]
 
 [ext_resource type="Script" path="res://World/WaterParticles.cs" id="1_2uog6"]
+[ext_resource type="AudioStream" uid="uid://bqa1er6dhi73c" path="res://Resources/Sounds/Splash7.wav" id="2_ed2lj"]
 
 [sub_resource type="Gradient" id="Gradient_uy0fy"]
 offsets = PackedFloat32Array(0, 0.362416)
@@ -36,5 +37,10 @@ script = ExtResource("1_2uog6")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ed2lj")
+volume_db = -4.0
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_OnTimeout"]

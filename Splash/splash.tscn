@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjlueaj2h6hmp"]
+[gd_scene load_steps=19 format=3 uid="uid://bjlueaj2h6hmp"]
 
 [ext_resource type="Script" path="res://Splash/Splash.cs" id="1_a7ixu"]
 [ext_resource type="Texture2D" uid="uid://r7pvn71q1k2c" path="res://Resources/Sprites/Splash/SquidSketch02-Sheet.png" id="2_q2gkn"]
 [ext_resource type="PackedScene" uid="uid://co1vamo3bbvya" path="res://UI/ui.tscn" id="3_76n6b"]
+[ext_resource type="AudioStream" uid="uid://6dq5drtmisfp" path="res://Resources/Sounds/Splash4.wav" id="4_d05e3"]
+[ext_resource type="AudioStream" uid="uid://iqqdbk0upgj6" path="res://Resources/Sounds/gameover_loud.mp3" id="4_vijl6"]
 
 [sub_resource type="Curve" id="Curve_gyr82"]
 max_value = 4.0
@@ -115,6 +117,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_d05e3")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_giro8"]
 _data = {
@@ -167,6 +184,21 @@ tracks/1/keys = {
 "method": &"Respawn"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_vijl6")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_opj2x"]
 resource_name = "grab"
@@ -269,6 +301,7 @@ one_shot = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_q2gkn")
 hframes = 10
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -297,7 +330,7 @@ libraries = {
 position = Vector2(12, 0)
 
 [node name="Tongue" type="Area2D" parent="TongueOrigin"]
-position = Vector2(26, 0)
+position = Vector2(16, 0)
 collision_layer = 0
 collision_mask = 4
 
@@ -323,6 +356,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -6.0
 
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnScreenExited"]

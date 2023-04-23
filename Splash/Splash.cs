@@ -32,7 +32,6 @@ public partial class Splash : FloatingBody
         if(SplashData.IsPlayerAlive()){
             if(dash && SplashData.UseEnergy(0.5f)){
                 velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
-                GetNode<AnimationPlayer>("AnimationPlayer").Play("move");
                 GetNode<GpuParticles2D>("InkParticles").Emitting = true;
                 Grabbed = null;
             }else{
@@ -158,5 +157,9 @@ public partial class Splash : FloatingBody
 
     public void Grab(Insect insect){
         Grabbed = insect;
+    }
+
+    public void Ungrabbed(){
+        Grabbed = null;
     }
 }

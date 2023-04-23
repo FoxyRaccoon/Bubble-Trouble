@@ -79,4 +79,13 @@ public partial class Insect : CharacterBody2D
         shell.Position = GlobalPosition - new Vector2(0, 30);
         GetParent().GetParent().GetNode("Collectibles").CallDeferred("add_child", shell);
     }
+
+    public void _OnAudioFinished(){
+        GetNode<Timer>("Timer2").WaitTime = new Random().Next(5, 10);
+        GetNode<Timer>("Timer2").Start();
+    }
+
+    public void _OnTimer2Timeout(){
+        GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D").Play();
+    }
 }

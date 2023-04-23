@@ -19,6 +19,14 @@ public partial class OxygenAlgae : Node2D
                 GetParent().AddChild(oxygen);
             }
         }
-        
+    }
+
+    public void _OnAudioFinished(){
+        GetNode<Timer>("Timer").WaitTime = new Random().Next(10, 20);
+        GetNode<Timer>("Timer").Start();
+    }
+
+    public void _OnTimerTimeout(){
+        GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D").Play();
     }
 }

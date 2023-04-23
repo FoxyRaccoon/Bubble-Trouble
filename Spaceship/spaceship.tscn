@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://u5kruqy6a3i6"]
+[gd_scene load_steps=20 format=3 uid="uid://u5kruqy6a3i6"]
 
 [ext_resource type="Texture2D" uid="uid://c83fyibpxx6r1" path="res://Resources/Sprites/Splash/SpaceshipSketch-Sheet.png" id="1_j3afj"]
 [ext_resource type="Script" path="res://Spaceship/Spaceship.cs" id="1_ve4xu"]
 [ext_resource type="Texture2D" uid="uid://egt04nxl2lwb" path="res://Resources/Sprites/Nature/shell.png" id="3_c52ku"]
 [ext_resource type="Texture2D" uid="uid://yh7salmb1tk4" path="res://Resources/Sprites/Nature/AirBubble.png" id="4_44lqq"]
 [ext_resource type="Texture2D" uid="uid://didiwahxni0pn" path="res://Resources/Sprites/Nature/OilDrop.png" id="5_ty4xe"]
+[ext_resource type="AudioStream" uid="uid://77mq5ch8uy5c" path="res://Resources/Sounds/buildsp1.mp3" id="6_7vrx8"]
+[ext_resource type="AudioStream" uid="uid://cmnnwdtoryply" path="res://Resources/Sounds/psz_ready3.mp3" id="7_oy7s5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_boup4"]
 radius = 50.0
@@ -93,7 +95,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_q1p43"]
 resource_name = "repairing"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -132,6 +134,25 @@ tracks/2/keys = {
 "method": &"RepairFinished"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_7vrx8")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_oy7s5")
+}],
+"times": PackedFloat32Array(0, 2)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hs8mm"]
 _data = {
@@ -219,5 +240,8 @@ fixed_fps = 20
 libraries = {
 "": SubResource("AnimationLibrary_hs8mm")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -4.0
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]

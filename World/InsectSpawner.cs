@@ -21,6 +21,7 @@ public partial class InsectSpawner : Node2D
     }
 
     public void _OnNightEntering(){
+        GetNode<Splash>("/root/World/Splash").Ungrabbed();
         foreach(Node child in GetChildren()){
             child.CallDeferred("queue_free");
         }
