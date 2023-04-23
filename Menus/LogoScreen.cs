@@ -5,6 +5,6 @@ public partial class LogoScreen : Control
 {
     public void OnTimeOut()
     {
-        GetNode<Transition>("/root/Transition").GreenTransition("res://Menus/main_menu.tscn");
+        GetNode<Transition>("/root/Transition").GreenTransition("res://Menus/game_start.tscn");
     }
 }

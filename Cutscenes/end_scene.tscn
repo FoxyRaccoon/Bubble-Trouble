@@ -55,7 +55,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 6, 14),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 900), Vector2(0, 900), Vector2(0, 0)]
+"values": [Vector2(0, 900), Vector2(0, 900), Vector2(0, -100)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -134,7 +134,7 @@ font_size = 28
 font_size = 20
 
 [node name="EndScene" type="Node2D"]
-position = Vector2(-2000, -4000)
+position = Vector2(-56, -1794.29)
 script = ExtResource("1_k0ekm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -154,7 +154,6 @@ libraries = {
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, -48)
-emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_xslcr")
 fixed_fps = 60
@@ -185,7 +184,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Game title"
+text = "Bubble Trouble"
 label_settings = SubResource("LabelSettings_lwiqt")
 horizontal_alignment = 1
 
@@ -261,20 +260,76 @@ text = "Music"
 label_settings = SubResource("LabelSettings_gqphp")
 horizontal_alignment = 1
 
+[node name="Label19" type="Label" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Alectade00"
+label_settings = SubResource("LabelSettings_47d8x")
+horizontal_alignment = 1
+
+[node name="LinkButton6" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "Find the game on itch.io"
+uri = "https://foxyraccoon.itch.io/bubble-trouble"
+
 [node name="Label9" type="Label" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sounds"
 label_settings = SubResource("LabelSettings_gqphp")
 horizontal_alignment = 1
 
+[node name="LinkButton" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Space Ultimate Megapack"
+uri = "https://gamesupply.itch.io/ultimate-space-game-mega-asset-package"
+
+[node name="LinkButton7" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Free mixkit sounds"
+uri = "https://mixkit.co/"
+
+[node name="LinkButton8" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Sound effect Starter pack"
+uri = "https://simon13666.itch.io/sound-starter-pack"
+
+[node name="LinkButton2" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "And the sources of the game on Github"
+uri = "https://github.com/FoxyRaccoon/Splash"
+
 [node name="Label10" type="Label" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Game Page"
+text = "To see more of us"
 label_settings = SubResource("LabelSettings_gqphp")
 horizontal_alignment = 1
 
-[node name="Label11" type="Label" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="LinkButton3" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Game Sources"
-label_settings = SubResource("LabelSettings_gqphp")
-horizontal_alignment = 1
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "The portfolio of Alectade00"
+uri = "https://www.alexanderfreyportfolio.de/"
+
+[node name="LinkButton4" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "The LinkedIn of C0v3rG1rL"
+uri = "https://www.linkedin.com/in/maria-dolors-sanchez/"
+
+[node name="LinkButton5" type="LinkButton" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "The medias for FoxyRaccoon"
+uri = "https://allmylinks.com/foxyraccoon"

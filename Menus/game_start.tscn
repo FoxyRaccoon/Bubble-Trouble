@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://btby8ym3ju5rr"]
+
+[ext_resource type="Script" path="res://Menus/GameStart.cs" id="1_6paat"]
+[ext_resource type="Texture2D" uid="uid://buwnk2bvbhjj3" path="res://Resources/Sprites/Menus/TitleScreen-Sheet.png" id="2_aiudu"]
+
+[sub_resource type="Animation" id="Animation_mqc02"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfgi4"]
+_data = {
+"idle": SubResource("Animation_mqc02")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ko0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ytoy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_78gtm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76g8d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_elvoo"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_blc6v"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_2sdpk"]
+events = [SubResource("InputEventKey_blc6v")]
+
+[node name="GameStart" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6paat")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(768, 432)
+scale = Vector2(2, 2)
+texture = ExtResource("2_aiudu")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+speed_scale = 1.2
+libraries = {
+"": SubResource("AnimationLibrary_rfgi4")
+}
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ko0n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4ytoy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_78gtm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_76g8d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_elvoo")
+shortcut = SubResource("Shortcut_2sdpk")
+shortcut_in_tooltip = false
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimeOut" flags=18]
+[connection signal="pressed" from="Button" to="." method="_OnButtonPressed"]
