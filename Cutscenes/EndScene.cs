@@ -11,4 +11,8 @@ public partial class EndScene : Node2D
         GetNode<AudioStreamPlayer>("/root/World/MusicPlayer").Stop();
         GetNode<AnimationPlayer>("AnimationPlayer").Play("go");
     }
+
+    public void ReturnToMainMenu(){
+        GetNode<Transition>("/root/Transition").WhiteTransition("res://Menus/main_menu.tscn");
+    }
 }

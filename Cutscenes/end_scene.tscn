@@ -3,9 +3,24 @@
 [ext_resource type="Script" path="res://Cutscenes/EndScene.cs" id="1_k0ekm"]
 [ext_resource type="Texture2D" uid="uid://b7nwlqquh1dx7" path="res://Resources/Sprites/SpaceshipSketch.png" id="2_lh67b"]
 
+[sub_resource type="Animation" id="Animation_que5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -800)]
+}
+
 [sub_resource type="Animation" id="Animation_2csj6"]
 resource_name = "go"
-length = 14.0
+length = 34.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,20 +69,19 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1.4, 1.4), Vector2(0.6, 0.6)]
 }
-
-[sub_resource type="Animation" id="Animation_que5j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Credits:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(34),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -800)]
+"values": [{
+"args": [],
+"method": &"ReturnToMainMenu"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oby6v"]
@@ -129,7 +143,7 @@ texture = ExtResource("2_lh67b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(1.4, 1.4)
 limit_left = -1500
 limit_top = -5000
 
