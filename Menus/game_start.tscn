@@ -61,6 +61,7 @@ position = Vector2(768, 432)
 scale = Vector2(2, 2)
 texture = ExtResource("2_aiudu")
 hframes = 6
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
