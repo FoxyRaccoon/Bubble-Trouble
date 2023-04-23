@@ -14,6 +14,7 @@ public partial class Biggie : Node2D
         GetNode<World>("/root/World").OnDay += _OnDayEntering;
         GetNode<World>("/root/World").OnNight += _OnNightEntering;
     }
+
     public void _OnTimerTimeout()
     {
         if(GetNode<Splash>("/root/World/Splash").IsInWater() && !GetNode<Splash>("/root/World/Splash").IsProtected()){
@@ -30,6 +31,7 @@ public partial class Biggie : Node2D
     }
 
     public void SetRandomPositions(){
+        ResetPosition();
         if(!GetNode<World>("/root/World").IsDay()){
             Step = 0;
             GetNode<CollisionShape2D>("Area2D2/CollisionShape2D").GlobalPosition = new Vector2(0, RNG.RandfRange(-1600, 1800));
@@ -55,8 +57,19 @@ public partial class Biggie : Node2D
 
     public void StepOn(){
         Step++;
+        GlobalPosition = GetNode<Splash>("/root/World/Splash").GlobalPosition;
+        GD.Print(GetNode<Node2D>("BackgroundBiggie").GlobalPosition);
+        if(Step == 2){
+            GetNode<AnimationPlayer>("BackgroundAnimation").Play("RightToLeft");
+        }else{
+            GetNode<AnimationPlayer>("BackgroundAnimation").Play("LeftToRight");
+        }
         if(Step == 3){
             GetNode<Timer>("Timer").Start();
         }
+    }
+
+    public void ResetPosition(){
+        GlobalPosition = new Vector2(0, 0);
     }
 }

@@ -1,12 +1,53 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkm0spxuuwa7a"]
+[gd_scene load_steps=17 format=3 uid="uid://bkm0spxuuwa7a"]
 
 [ext_resource type="Texture2D" uid="uid://dctffw1i17nbd" path="res://Resources/Sprites/BiggieTest-Sheet.png" id="1_1mavs"]
 [ext_resource type="Script" path="res://Foes/Biggie.cs" id="1_g2yc1"]
 [ext_resource type="Texture2D" uid="uid://gq2ipve50fp2" path="res://Resources/Sprites/better_light.png" id="2_0dxwf"]
+[ext_resource type="Texture2D" uid="uid://81nk8gre8pa2" path="res://Resources/Sprites/light.png" id="2_r8eb7"]
+[ext_resource type="Texture2D" uid="uid://70v6yy11ufvx" path="res://Resources/Sprites/BiggieBackground-Sheet.png" id="2_tjm26"]
 [ext_resource type="Script" path="res://Foes/BiggieDetection.cs" id="4_shh7d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5434o"]
 radius = 40.0
+
+[sub_resource type="Animation" id="Animation_dbbek"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_36fgq"]
 resource_name = "appear"
@@ -110,12 +151,191 @@ tracks/7/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_dbbek"]
+[sub_resource type="Animation" id="Animation_g8hp2"]
+resource_name = "background"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundBiggie/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8entp"]
+_data = {
+"RESET": SubResource("Animation_dbbek"),
+"appear": SubResource("Animation_36fgq"),
+"background": SubResource("Animation_g8hp2")
+}
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b3dut"]
+a = Vector2(-2000, 0)
+b = Vector2(2000, 0)
+
+[sub_resource type="Animation" id="Animation_xeep1"]
+resource_name = "LeftToRight"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundBiggie:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-300, 0), Vector2(300, 0)]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("background", "[stop]"),
+"times": PackedFloat32Array(0, 4)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackgroundBiggie:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackgroundBiggie:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BackgroundBiggie:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 1), Color(1, 1, 1, 0.156863)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ResetPosition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_m6itk"]
+resource_name = "RightToLeft"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundBiggie:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(-300, 0)]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("background", "[stop]"),
+"times": PackedFloat32Array(0, 4)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackgroundBiggie:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackgroundBiggie:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BackgroundBiggie:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 1), Color(1, 1, 1, 0.156863)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ResetPosition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mj5o2"]
 resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:visible")
+tracks/0/path = NodePath("BackgroundBiggie:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -124,45 +344,16 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PointLight2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8entp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhkuo"]
 _data = {
-"RESET": SubResource("Animation_dbbek"),
-"appear": SubResource("Animation_36fgq")
+"LeftToRight": SubResource("Animation_xeep1"),
+"RESET": SubResource("Animation_mj5o2"),
+"RightToLeft": SubResource("Animation_m6itk")
 }
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_b3dut"]
-a = Vector2(-2000, 0)
-b = Vector2(2000, 0)
 
 [node name="Biggie" type="Node2D"]
 script = ExtResource("1_g2yc1")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -192,7 +383,7 @@ texture = ExtResource("2_0dxwf")
 texture_scale = 0.4
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 6.0
 one_shot = true
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -212,6 +403,27 @@ script = ExtResource("4_shh7d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
 shape = SubResource("SegmentShape2D_b3dut")
+
+[node name="BackgroundBiggie" type="Node2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.156863)
+position = Vector2(-300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundBiggie"]
+texture = ExtResource("2_tjm26")
+hframes = 5
+
+[node name="PointLight2D2" type="PointLight2D" parent="BackgroundBiggie"]
+position = Vector2(10, 3)
+energy = 0.1
+texture = ExtResource("2_r8eb7")
+texture_scale = 0.02
+
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_fhkuo")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_OnBodyEntered"]
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
