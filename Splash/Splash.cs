@@ -94,6 +94,7 @@ public partial class Splash : FloatingBody
         if(SplashData.IsPlayerAlive()){
             SplashData.Kill();
         }
+        Ungrabbed();
         GetNode<AudioStreamPlayer>("/root/World/MusicPlayer").Stop();
         GetSplashData().GetInventory().Clear();
         GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("die");
@@ -161,5 +162,6 @@ public partial class Splash : FloatingBody
 
     public void Ungrabbed(){
         Grabbed = null;
+        Velocity = Vector2.Zero;
     }
 }

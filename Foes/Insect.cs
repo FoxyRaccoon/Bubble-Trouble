@@ -14,7 +14,7 @@ public partial class Insect : CharacterBody2D
         }else if(body is Fruit){
             Target = null;
             body.CallDeferred("queue_free");
-            if(new Random().Next(0, 10) == 0){
+            if(new Random().Next(0, 3) == 0){
                 SpawnShell();
             }
         }
@@ -42,7 +42,7 @@ public partial class Insect : CharacterBody2D
     public void _OnTimerTimeout(){
         if(Target != null){
             if(Target.IsVisibleInTree()){
-                GetNode<NavigationAgent2D>("NavigationAgent2D").TargetPosition = Target.GlobalPosition + new Vector2(0, 30);
+                GetNode<NavigationAgent2D>("NavigationAgent2D").TargetPosition = Target.GlobalPosition - new Vector2(0, 30);
             }else{
                 Target = null;
             }
@@ -76,7 +76,7 @@ public partial class Insect : CharacterBody2D
 
     private void SpawnShell(){
         Shell shell = (Shell)ShellScene.Instantiate();
-        shell.Position = GlobalPosition - new Vector2(0, 30);
+        shell.Position = GlobalPosition + new Vector2(0, 30);
         GetParent().GetParent().GetNode("Collectibles").CallDeferred("add_child", shell);
     }
 

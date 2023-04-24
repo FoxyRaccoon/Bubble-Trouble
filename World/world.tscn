@@ -38,9 +38,9 @@ glow_blend_mode = 0
 glow_hdr_threshold = 1.2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cxrmr"]
-vertices = PackedVector2Array(-543, -1844, -1055, -1987, -1496, -2246, -1474, -4207, 1228, -4325, 1338, -2632, 1010, -2262, 499, -2020, 356, -1969, 271, -1844)
+vertices = PackedVector2Array(-547, -1919, -1055, -1987, -1496, -2246, -1474, -4207, 1228, -4325, 1338, -2632, 1010, -2262, 499, -2020, 356, -1969, 308, -1919)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8), PackedInt32Array(0, 8, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1474, -4207, 1228, -4325, 1338, -2632, 1010, -2262, 499, -2020, 356, -1969, 271, -1844, -543, -1844, -1055, -1987, -1496, -2246)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1474, -4207, 1228, -4325, 1338, -2632, 1010, -2262, 499, -2020, 356, -1969, 308, -1919, -547, -1919, -1055, -1987, -1496, -2246)])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_v86y4")
