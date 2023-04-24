@@ -306,7 +306,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
 text = "And the sources of the game on Github"
-uri = "https://github.com/FoxyRaccoon/Splash"
+uri = "https://github.com/FoxyRaccoon/Bubble-Trouble"
 
 [node name="Label10" type="Label" parent="Credits/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
