@@ -20,16 +20,16 @@ public partial class Splash : FloatingBody
     
     public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
-        bool swimming = Input.IsActionPressed("swimming");
-        bool dash = Input.IsActionPressed("dash");
+        if(SplashData.IsPlayerAlive() && SplashData.CanPlayerMove()){
 
-        if(Input.IsActionJustPressed("grab")){
-            GrabPoint = new Vector2(0, 0);
-            GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("grab");
-        }
+            Vector2 velocity = Velocity;
+            bool swimming = Input.IsActionPressed("swimming");
+            bool dash = Input.IsActionPressed("dash");
 
-        if(SplashData.IsPlayerAlive()){
+            if(Input.IsActionJustPressed("grab")){
+                GrabPoint = new Vector2(0, 0);
+                GetNode<AnimationPlayer>("ActionAnimationPlayer").Play("grab");
+            }
             if(dash && SplashData.UseEnergy(0.5f)){
                 velocity = Vector2.FromAngle(Rotation) * WaterSpeed;
                 GetNode<GpuParticles2D>("InkParticles").Emitting = true;
@@ -68,18 +68,19 @@ public partial class Splash : FloatingBody
                     GlobalPosition = Grabbed.GlobalPosition + new Vector2(0, 50);
                 }
             }
-        }
-        
-		Velocity = velocity;
-        if(Velocity == Vector2.Zero || dash){
-            Rotation = Mathf.LerpAngle(Rotation, (GetGlobalMousePosition() - GlobalPosition).Normalized().Angle(), 0.1f);
-        }else{
-            Rotation = Mathf.LerpAngle(Rotation, Velocity.Angle(), 0.1f);
-        }
-        
-		MoveAndSlide();
 
-        SplashData.ComputeOxygen((float)delta, IsInWater());
+            Velocity = velocity;
+            if(Velocity == Vector2.Zero || dash){
+                Rotation = Mathf.LerpAngle(Rotation, (GetGlobalMousePosition() - GlobalPosition).Normalized().Angle(), 0.1f);
+            }else{
+                Rotation = Mathf.LerpAngle(Rotation, Velocity.Angle(), 0.1f);
+            }
+            
+            MoveAndSlide();
+
+            SplashData.ComputeOxygen((float)delta, IsInWater());
+        }
+        
         if(!SplashData.IsPlayerAlive()){
             Die();
         }
@@ -107,6 +108,7 @@ public partial class Splash : FloatingBody
             GetNode<UI>("CanvasLayer/UI").SetPlayerData(SplashData);
             GetNode<World>("/root/World").AdddHours(6f);
             GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("die");
+            SplashData.ActivateMovement();
         }
     }
 
