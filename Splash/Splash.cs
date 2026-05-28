@@ -108,8 +108,11 @@ public partial class Splash : FloatingBody
             GetNode<UI>("CanvasLayer/UI").SetPlayerData(SplashData);
             GetNode<World>("/root/World").AdddHours(6f);
             GetNode<AnimationPlayer>("ActionAnimationPlayer").PlayBackwards("die");
-            SplashData.ActivateMovement();
         }
+    }
+
+    public void EndRespawn(){
+        SplashData.ActivateMovement();
     }
 
     public void _OnScreenExited()

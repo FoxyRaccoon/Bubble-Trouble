@@ -1,13 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjlueaj2h6hmp"]
+[gd_scene format=3 uid="uid://bjlueaj2h6hmp"]
 
-[ext_resource type="Script" path="res://Splash/Splash.cs" id="1_a7ixu"]
+[ext_resource type="Script" uid="uid://iigteb5u8vfc" path="res://Splash/Splash.cs" id="1_a7ixu"]
 [ext_resource type="Texture2D" uid="uid://r7pvn71q1k2c" path="res://Resources/Sprites/Splash/SquidSketch02-Sheet.png" id="2_q2gkn"]
 [ext_resource type="PackedScene" uid="uid://co1vamo3bbvya" path="res://UI/ui.tscn" id="3_76n6b"]
 [ext_resource type="AudioStream" uid="uid://6dq5drtmisfp" path="res://Resources/Sounds/Splash4.wav" id="4_d05e3"]
 [ext_resource type="AudioStream" uid="uid://iqqdbk0upgj6" path="res://Resources/Sounds/gameover_loud.mp3" id="4_vijl6"]
 
 [sub_resource type="Curve" id="Curve_gyr82"]
-max_value = 4.0
+_limits = [0.0, 4.0, 0.0, 1.0]
 _data = [Vector2(0, 3.89091), 0.0, 0.0, 0, 0, Vector2(0.283333, 2.03636), 0.0, 0.0, 0, 0, Vector2(0.766667, 1.09091), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -15,16 +15,14 @@ point_count = 4
 curve = SubResource("Curve_gyr82")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4rlcp"]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 4.0
-particle_flag_disable_z = true
 direction = Vector3(-1, 0, 0)
 spread = 32.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 60.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_qm84n")
 color = Color(0, 0, 0, 1)
 turbulence_enabled = true
@@ -135,8 +133,8 @@ tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_giro8"]
 _data = {
-"grab": SubResource("Animation_kpv47"),
-"move": SubResource("Animation_xm43j")
+&"grab": SubResource("Animation_kpv47"),
+&"move": SubResource("Animation_xm43j")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0uk6y"]
@@ -177,9 +175,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"EndRespawn"
+}, {
 "args": [],
 "method": &"Respawn"
 }]
@@ -269,87 +270,83 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bj4qw"]
 _data = {
-"RESET": SubResource("Animation_ljyij"),
-"die": SubResource("Animation_gwjty"),
-"grab": SubResource("Animation_opj2x")
+&"RESET": SubResource("Animation_ljyij"),
+&"die": SubResource("Animation_gwjty"),
+&"grab": SubResource("Animation_opj2x")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wc12"]
 radius = 4.0
 
-[node name="Splash" type="CharacterBody2D"]
+[node name="Splash" type="CharacterBody2D" unique_id=649926635]
 collision_layer = 43
 motion_mode = 1
 wall_min_slide_angle = 0.785398
 script = ExtResource("1_a7ixu")
 
-[node name="InkParticles" type="GPUParticles2D" parent="."]
+[node name="InkParticles" type="GPUParticles2D" parent="." unique_id=941579697]
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_4rlcp")
 lifetime = 0.8
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_4rlcp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=697543072]
 position = Vector2(16, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5pq27")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1217535034]
 wait_time = 1.1
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1112303510]
 texture = ExtResource("2_q2gkn")
 hframes = 10
 frame = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_giro8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=887270817]
+libraries/ = SubResource("AnimationLibrary_giro8")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1190695605]
 position = Vector2(16, 4.76837e-07)
 scale = Vector2(0.9, 0.5)
 
-[node name="CollectionArea" type="Area2D" parent="."]
+[node name="CollectionArea" type="Area2D" parent="." unique_id=2039965922]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea" unique_id=504721297]
 position = Vector2(16, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0uk6y")
 
-[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_bj4qw")
-}
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="." unique_id=275676539]
+libraries/ = SubResource("AnimationLibrary_bj4qw")
 
-[node name="TongueOrigin" type="Marker2D" parent="."]
+[node name="TongueOrigin" type="Marker2D" parent="." unique_id=1208383391]
 position = Vector2(12, 0)
 
-[node name="Tongue" type="Area2D" parent="TongueOrigin"]
-position = Vector2(16, 0)
+[node name="Tongue" type="Area2D" parent="TongueOrigin" unique_id=1433628551]
+position = Vector2(26, 0)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TongueOrigin/Tongue"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TongueOrigin/Tongue" unique_id=1821705027]
 shape = SubResource("CircleShape2D_3wc12")
 disabled = true
 
-[node name="TongueShape" type="Polygon2D" parent="TongueOrigin"]
+[node name="TongueShape" type="Polygon2D" parent="TongueOrigin" unique_id=1108574022]
 color = Color(0.988235, 0.576471, 0.733333, 1)
 polygon = PackedVector2Array(0, 1, 5, 1, 5, -1, 0, -1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1708737709]
 
-[node name="UI" parent="CanvasLayer" instance=ExtResource("3_76n6b")]
+[node name="UI" parent="CanvasLayer" unique_id=911591241 instance=ExtResource("3_76n6b")]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1640619068]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -357,10 +354,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1471300673]
 current = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=442183483]
 volume_db = -6.0
 
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
