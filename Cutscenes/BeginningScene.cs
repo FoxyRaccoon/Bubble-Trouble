@@ -18,5 +18,6 @@ public partial class BeginningScene : Node2D
         GetNode<Camera2D>("/root/World/FollowingCamera").Enabled = true;
         GetNode<Camera2D>("/root/World/FollowingCamera").MakeCurrent();
         GetNode<AudioStreamPlayer>("/root/World/MusicPlayer").Play();
+        GetNode<Splash>("/root/World/Splash").GetSplashData().ActivateMovement();
     }
 }

@@ -9,6 +9,7 @@ public class PlayerData{
     private float CurrentEnergy;
     private Inventory PlayerInventory;
     private bool IsAlive = true;
+    private bool CanMove = false;
     public event BreathHandler Breath;
     public event EnergyHandler Energy;
     public PlayerData(){
@@ -95,5 +96,13 @@ public class PlayerData{
 
     public Inventory GetInventory(){
         return PlayerInventory;
+    }
+
+    public bool CanPlayerMove(){
+        return CanMove;
+    }
+
+    public void ActivateMovement(){
+        CanMove = true;
     }
 }

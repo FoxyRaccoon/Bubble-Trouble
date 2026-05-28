@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0pi8ufdobt1n"]
+[gd_scene format=3 uid="uid://d0pi8ufdobt1n"]
 
-[ext_resource type="Script" path="res://Menus/GodotScreen.cs" id="1_2gv65"]
+[ext_resource type="Script" uid="uid://2sgk5coe82k" path="res://Menus/GodotScreen.cs" id="1_2gv65"]
 [ext_resource type="Texture2D" uid="uid://dglrrxyvqd41y" path="res://Resources/Logos/logo_small_monochrome_dark.svg" id="2_4k5ho"]
 
-[node name="GodotScreen" type="Control"]
+[node name="GodotScreen" type="Control" unique_id=752283865]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2gv65")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1029938642]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_vertical = 2
 color = Color(0.0705882, 0.133333, 0.247059, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=859898999]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,23 +35,23 @@ theme_override_constants/margin_right = 360
 theme_override_constants/margin_bottom = 360
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1868361328]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=397404752]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=254790587]
 layout_mode = 2
 texture = ExtResource("2_4k5ho")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=406024292]
 wait_time = 2.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="OnTimeOut" flags=18]
+[connection signal="timeout" from="Timer" to="." method="OnTimeOut"]
