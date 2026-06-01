@@ -1,19 +1,30 @@
-[gd_scene load_steps=22 format=3 uid="uid://w3ddchneavrs"]
+[gd_scene format=3 uid="uid://w3ddchneavrs"]
 
 [ext_resource type="PackedScene" uid="uid://bjlueaj2h6hmp" path="res://Splash/splash.tscn" id="1_8eu02"]
-[ext_resource type="Script" path="res://World/World.cs" id="1_v86y4"]
-[ext_resource type="Script" path="res://World/FollowingCamera.cs" id="3_a0ywa"]
+[ext_resource type="Script" uid="uid://drd0ty23hvlsg" path="res://World/World.cs" id="1_v86y4"]
+[ext_resource type="Script" uid="uid://cdua15l7pbd1j" path="res://World/FollowingCamera.cs" id="3_a0ywa"]
 [ext_resource type="PackedScene" uid="uid://co2as2iw7hqe5" path="res://Cutscenes/end_scene.tscn" id="3_f4jun"]
 [ext_resource type="PackedScene" uid="uid://b32ga4iedvjfc" path="res://World/oil_volcano.tscn" id="5_h1h2p"]
 [ext_resource type="PackedScene" uid="uid://lklud8p0cfow" path="res://World/oxygen_algae.tscn" id="5_ta0u2"]
 [ext_resource type="PackedScene" uid="uid://u5kruqy6a3i6" path="res://Spaceship/spaceship.tscn" id="6_0pgcc"]
 [ext_resource type="PackedScene" uid="uid://2a4ii7fqp161" path="res://World/tree.tscn" id="6_kma0a"]
-[ext_resource type="Script" path="res://World/InsectSpawner.cs" id="9_q5w8x"]
+[ext_resource type="Script" uid="uid://c2kbrmjli0dqi" path="res://World/InsectSpawner.cs" id="9_q5w8x"]
 [ext_resource type="PackedScene" uid="uid://b6bbm234t6ved" path="res://Foes/biggie.tscn" id="11_2j8ed"]
 [ext_resource type="PackedScene" uid="uid://c8hthyxlawaxe" path="res://World/protection_area.tscn" id="11_fouhn"]
 [ext_resource type="PackedScene" path="res://Cutscenes/beginning_scene.tscn" id="13_ibhxo"]
 [ext_resource type="Texture2D" uid="uid://81nk8gre8pa2" path="res://Resources/Sprites/Lights/light.png" id="13_wyce4"]
 [ext_resource type="AudioStream" uid="uid://pvbrog8l53m8" path="res://Resources/Sounds/Theme/TestSong-Squiddy.mp3" id="14_0ymcu"]
+
+[sub_resource type="Gradient" id="Gradient_f23eu"]
+offsets = PackedFloat32Array(0, 0.53289473, 1)
+colors = PackedColorArray(9.914935e-06, 0.63637155, 0.8057806, 1, 1.6845763e-06, 0, 0.58875376, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oeat8"]
+gradient = SubResource("Gradient_f23eu")
+width = 3000
+height = 4000
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3xcn"]
 size = Vector2(3500, 4000)
@@ -42,134 +53,140 @@ vertices = PackedVector2Array(-547, -1919, -1055, -1987, -1496, -2246, -1474, -4
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8), PackedInt32Array(0, 8, 9)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1474, -4207, 1228, -4325, 1338, -2632, 1010, -2262, 499, -2020, 356, -1969, 308, -1919, -547, -1919, -1055, -1987, -1496, -2246)])
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=1644951464]
 script = ExtResource("1_v86y4")
 metadata/_edit_vertical_guides_ = []
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=259797636]
 offset_left = -1887.0
 offset_top = -7800.0
 offset_right = 1913.0
 offset_bottom = -1800.0
 color = Color(0, 0.552941, 0.556863, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1490511177]
+visible = false
 offset_left = -1525.0
 offset_top = -1800.0
 offset_right = 1686.0
 offset_bottom = 2271.0
 color = Color(0.117647, 0.105882, 0.705882, 1)
 
-[node name="Water" type="Area2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1201755016]
+position = Vector2(156, 200)
+texture = SubResource("GradientTexture2D_oeat8")
+
+[node name="Water" type="Area2D" parent="." unique_id=711475578]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water" unique_id=1085138633]
 position = Vector2(0, 200)
 shape = SubResource("RectangleShape2D_d3xcn")
 
-[node name="Spaceship" parent="." instance=ExtResource("6_0pgcc")]
+[node name="Spaceship" parent="." unique_id=326032055 instance=ExtResource("6_0pgcc")]
 position = Vector2(-56, 2137)
 
-[node name="EndScene" parent="." instance=ExtResource("3_f4jun")]
+[node name="EndScene" parent="." unique_id=193321947 instance=ExtResource("3_f4jun")]
 visible = false
 
-[node name="BeginningScene" parent="." instance=ExtResource("13_ibhxo")]
+[node name="BeginningScene" parent="." unique_id=776934274 instance=ExtResource("13_ibhxo")]
 
-[node name="Biggie" parent="." instance=ExtResource("11_2j8ed")]
+[node name="Biggie" parent="." unique_id=1591680116 instance=ExtResource("11_2j8ed")]
 
-[node name="OilVolcano" parent="." instance=ExtResource("5_h1h2p")]
+[node name="OilVolcano" parent="." unique_id=1124942171 instance=ExtResource("5_h1h2p")]
 position = Vector2(-1090, 1682)
 
-[node name="OilVolcano2" parent="." instance=ExtResource("5_h1h2p")]
+[node name="OilVolcano2" parent="." unique_id=1999392821 instance=ExtResource("5_h1h2p")]
 position = Vector2(1028, 1822)
 
-[node name="OxygenAlgae" parent="." instance=ExtResource("5_ta0u2")]
+[node name="OxygenAlgae" parent="." unique_id=1527278894 instance=ExtResource("5_ta0u2")]
 position = Vector2(-786, -489)
 
-[node name="OxygenAlgae2" parent="." instance=ExtResource("5_ta0u2")]
+[node name="OxygenAlgae2" parent="." unique_id=930429140 instance=ExtResource("5_ta0u2")]
 position = Vector2(-743, -485)
 
-[node name="OxygenAlgae3" parent="." instance=ExtResource("5_ta0u2")]
+[node name="OxygenAlgae3" parent="." unique_id=1943716172 instance=ExtResource("5_ta0u2")]
 position = Vector2(737, -1545)
 
-[node name="Tree" parent="." instance=ExtResource("6_kma0a")]
+[node name="Tree" parent="." unique_id=723792734 instance=ExtResource("6_kma0a")]
 position = Vector2(-661, -2728)
 rotation = 0.0924268
 
-[node name="Tree2" parent="." instance=ExtResource("6_kma0a")]
+[node name="Tree2" parent="." unique_id=823290941 instance=ExtResource("6_kma0a")]
 position = Vector2(458, -2880)
 rotation = 2.89875
 scale = Vector2(1, -1)
 
-[node name="Collectibles" type="Node2D" parent="."]
+[node name="Collectibles" type="Node2D" parent="." unique_id=144963369]
 
-[node name="InsectSpawner" type="Node2D" parent="."]
+[node name="InsectSpawner" type="Node2D" parent="." unique_id=973190656]
 position = Vector2(400, -3000)
 script = ExtResource("9_q5w8x")
 
-[node name="Splash" parent="." instance=ExtResource("1_8eu02")]
+[node name="Splash" parent="." unique_id=727625792 instance=ExtResource("1_8eu02")]
 position = Vector2(-160, 2150)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1023274773]
+visible = false
 offset_left = -1525.0
 offset_top = -1800.0
 offset_right = 1686.0
 offset_bottom = 2271.0
 color = Color(0.372549, 0.847059, 0.8, 0.34902)
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=325207247]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D4"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D4" unique_id=580806126]
 polygon = PackedVector2Array(-691, -1872, -532, -1795, -481, -1696, -475, -1571, -463, -1419, -499.922, -1339.79, -521, -1214, -513, -1115, -455, -952, -443, -887, -467, -817, -525, -771, -568, -763, -617, -771, -685, -811, -739, -820, -784.298, -817.85, -827, -811, -857, -781, -857, -736, -875, -695, -891, -660, -885, -585, -862, -512, -825, -494, -620, -481, -517, -512, -473.817, -508.385, -455, -492, -441, -472, -441, -442, -450, -376, -476, -211, -444, -149, -441, -100, -455.759, -27.5337, -386, 70, -316, 107, -289.956, 141.379, -260, 229, -238, 335, -236, 414, -239, 492, -252, 577, -246, 620, -259, 656, -280, 683, -347, 731, -417, 770, -485, 813, -518, 844, -528, 878, -512, 908, -505, 939, -499, 997, -499, 1060, -517, 1134, -536, 1179, -584, 1214, -665, 1254, -788, 1223, -895, 1209, -1014, 1196, -1110, 1208, -1171, 1262, -1202, 1336, -1251.87, 1397.99, -1305, 1450, -1317, 1490, -1313, 1552, -1299, 1602, -1266, 1640, -1188, 1675, -1071, 1683, -959, 1678, -910, 1631, -881, 1556, -823, 1524, -713, 1504, -650.712, 1513.25, -601.847, 1540.34, -540, 1670, -468, 1877, -442, 1975, -416, 2056, -358, 2123, -242, 2164, -171, 2184, -56, 2191, 17, 2183, 99, 2152, 223, 2123, 405, 2095, 518, 2053, 570, 2006, 596, 1975, 636, 1886, 671.365, 1828.67, 847, 1669, 886, 1641, 926, 1646, 962, 1701, 958, 1770, 960, 1804, 979, 1823, 1063, 1821, 1121, 1817, 1170, 1793, 1215, 1752, 1247, 1695, 1238, 1629, 1241, 1558, 1207, 1471, 1147.15, 1348.04, 1151, 1231, 1185, 1191, 1233, 1184, 1271, 1166, 1347, 1115, 1428, 1043, 1450, 942, 1428, 823, 1391, 766, 1310, 742, 1218, 758, 1157, 799, 1102, 862, 1086, 944, 1105, 1125, 1093, 1185, 942, 1323, 825, 1475, 708, 1622, 659.461, 1644.28, 555.218, 1635.29, 509, 1613, 395, 1494, 363, 1446, 365.282, 1379.59, 418, 1209, 431, 1162, 421, 1103, 364.111, 926.702, 352, 852, 377, 685, 414, 641, 471.881, 622.574, 699, 583, 771.067, 551.947, 828, 505, 830, 421, 782.521, 114.4, 735, 65, 595.664, 32.0009, 543, 16, 487, -29, 479, -94, 515.685, -154.343, 554, -209, 940, -326, 986, -552, 1027, -600, 1105, -647, 1270, -623, 1406, -549, 1489, -522, 1586, -534, 1620, -603, 1633, -682, 1578, -759, 1420, -769, 1342, -726, 1294, -684, 1250.34, -680.333, 1130, -721, 1056, -774, 1026, -936, 860, -1174, 801, -1282, 711, -1385, 476, -1432, 390, -1456, 298, -1510, 314, -1576, 364.392, -1598.25, 482, -1594, 563, -1588, 653, -1569, 694, -1548, 713, -1544, 735, -1544, 756, -1546, 776, -1550, 796, -1556, 811, -1564, 824, -1579, 830, -1598, 834, -1617, 833, -1637, 833, -1674, 828, -1693, 821, -1709, 807, -1737, 784, -1762, 745, -1777, 699, -1787, 653, -1787, 615, -1782, 587, -1767, 549, -1753, 521, -1754, 483, -1754, 446, -1768, 400, -1800, 358, -1840, 350, -1898, 382, -1930, 555, -1989, 680, -2037, 929, -2098, 1310, -2150, 1888, -2116, 1888, 3016, -1795, 3016, -1782, -1811, -1216, -1871)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D4"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D4" unique_id=80156218]
 occluder = SubResource("OccluderPolygon2D_rawky")
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D4"]
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D4" unique_id=936251815]
 light_mask = 2
 color = Color(0.32549, 0.32549, 0.32549, 1)
 antialiased = true
 polygon = PackedVector2Array(-691, -1872, -532, -1795, -481, -1696, -475, -1571, -463, -1419, -499.922, -1339.79, -521, -1214, -513, -1115, -455, -952, -443, -887, -467, -817, -525, -771, -568, -763, -617, -771, -685, -811, -739, -820, -784.298, -817.85, -827, -811, -857, -781, -857, -736, -875, -695, -891, -660, -885, -585, -862, -512, -825, -494, -620, -481, -517, -512, -473.817, -508.385, -455, -492, -441, -472, -441, -442, -450, -376, -476, -211, -444, -149, -441, -100, -455.759, -27.5337, -386, 70, -316, 107, -289.956, 141.379, -260, 229, -238, 335, -236, 414, -239, 492, -252, 577, -246, 620, -259, 656, -280, 683, -347, 731, -417, 770, -485, 813, -518, 844, -528, 878, -512, 908, -505, 939, -499, 997, -499, 1060, -517, 1134, -536, 1179, -584, 1214, -665, 1254, -788, 1223, -895, 1209, -1014, 1196, -1110, 1208, -1171, 1262, -1202, 1336, -1251.87, 1397.99, -1305, 1450, -1317, 1490, -1313, 1552, -1299, 1602, -1266, 1640, -1188, 1675, -1071, 1683, -959, 1678, -910, 1631, -881, 1556, -823, 1524, -713, 1504, -650.712, 1513.25, -601.847, 1540.34, -540, 1670, -468, 1877, -442, 1975, -416, 2056, -358, 2123, -242, 2164, -171, 2184, -56, 2191, 17, 2183, 99, 2152, 223, 2123, 405, 2095, 518, 2053, 570, 2006, 596, 1975, 636, 1886, 671.365, 1828.67, 847, 1669, 886, 1641, 926, 1646, 962, 1701, 958, 1770, 960, 1804, 979, 1823, 1063, 1821, 1121, 1817, 1170, 1793, 1215, 1752, 1247, 1695, 1238, 1629, 1241, 1558, 1207, 1471, 1147.15, 1348.04, 1151, 1231, 1185, 1191, 1233, 1184, 1271, 1166, 1347, 1115, 1428, 1043, 1450, 942, 1428, 823, 1391, 766, 1310, 742, 1218, 758, 1157, 799, 1102, 862, 1086, 944, 1105, 1125, 1093, 1185, 942, 1323, 825, 1475, 708, 1622, 659.461, 1644.28, 555.218, 1635.29, 509, 1613, 395, 1494, 363, 1446, 365.282, 1379.59, 418, 1209, 431, 1162, 421, 1103, 364.111, 926.702, 352, 852, 377, 685, 414, 641, 471.881, 622.574, 699, 583, 771.067, 551.947, 828, 505, 830, 421, 782.521, 114.4, 735, 65, 595.664, 32.0009, 543, 16, 487, -29, 479, -94, 515.685, -154.343, 554, -209, 940, -326, 986, -552, 1027, -600, 1105, -647, 1270, -623, 1406, -549, 1489, -522, 1586, -534, 1620, -603, 1633, -682, 1578, -759, 1420, -769, 1342, -726, 1294, -684, 1250.34, -680.333, 1130, -721, 1056, -774, 1026, -936, 860, -1174, 801, -1282, 711, -1385, 476, -1432, 390, -1456, 298, -1510, 314, -1576, 364.392, -1598.25, 482, -1594, 563, -1588, 653, -1569, 694, -1548, 713, -1544, 735, -1544, 756, -1546, 776, -1550, 796, -1556, 811, -1564, 824, -1579, 830, -1598, 834, -1617, 833, -1637, 833, -1674, 828, -1693, 821, -1709, 807, -1737, 784, -1762, 745, -1777, 699, -1787, 653, -1787, 615, -1782, 587, -1767, 549, -1753, 521, -1754, 483, -1754, 446, -1768, 400, -1800, 358, -1840, 350, -1898, 382, -1930, 555, -1989, 680, -2037, 929, -2098, 1310, -2150, 1888, -2116, 1888, 3016, -1795, 3016, -1782, -1811, -1216, -1871)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=197648249]
 position = Vector2(0, 2180)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1717146885]
 shape = SubResource("WorldBoundaryShape2D_0cnbw")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1894523457]
 position = Vector2(-1650, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1448765210]
 shape = SubResource("WorldBoundaryShape2D_x106t")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1475209152]
 position = Vector2(1650, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1277367171]
 shape = SubResource("WorldBoundaryShape2D_xa6li")
 
-[node name="FollowingCamera" type="Camera2D" parent="."]
+[node name="FollowingCamera" type="Camera2D" parent="." unique_id=1628733368]
 enabled = false
 zoom = Vector2(1.4, 1.4)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("3_a0ywa")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1595460193]
 environment = SubResource("Environment_co85h")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1642051161]
 color = Color(0.188235, 0.188235, 0.188235, 1)
 
-[node name="WorldCenter" type="Marker2D" parent="."]
-rotation = 3.31613
+[node name="WorldCenter" type="Marker2D" parent="." unique_id=225347840]
+rotation = -3.3161256
 
-[node name="Sun" type="Marker2D" parent="WorldCenter"]
+[node name="Sun" type="Marker2D" parent="WorldCenter" unique_id=1737504750]
 position = Vector2(0, -6000)
 
-[node name="PointLight2D2" type="PointLight2D" parent="WorldCenter/Sun"]
+[node name="PointLight2D2" type="PointLight2D" parent="WorldCenter/Sun" unique_id=452346895]
 color = Color(1, 1, 0.85098, 1)
 energy = 0.8
 range_item_cull_mask = 2
@@ -177,20 +194,16 @@ shadow_item_cull_mask = 2
 texture = ExtResource("13_wyce4")
 texture_scale = 5.0
 
-[node name="PointLight2D" type="PointLight2D" parent="WorldCenter/Sun"]
-color = Color(1, 1, 0.85098, 1)
-energy = 1.2
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="WorldCenter/Sun" unique_id=2131796248]
+color = Color(1, 1, 0.8509804, 1)
+energy = 0.4
 shadow_enabled = true
-shadow_filter = 2
-shadow_filter_smooth = 0.8
-texture = ExtResource("13_wyce4")
-texture_scale = 5.0
 
-[node name="Moon" type="Marker2D" parent="WorldCenter"]
+[node name="Moon" type="Marker2D" parent="WorldCenter" unique_id=2013886774]
 visible = false
 position = Vector2(0, 6000)
 
-[node name="PointLight2D2" type="PointLight2D" parent="WorldCenter/Moon"]
+[node name="PointLight2D2" type="PointLight2D" parent="WorldCenter/Moon" unique_id=1455049406]
 energy = 0.6
 blend_mode = 2
 range_item_cull_mask = 2
@@ -198,34 +211,30 @@ shadow_item_cull_mask = 2
 texture = ExtResource("13_wyce4")
 texture_scale = 5.0
 
-[node name="PointLight2D" type="PointLight2D" parent="WorldCenter/Moon"]
-color = Color(0.721569, 0.717647, 0.713726, 1)
-energy = 0.5
-blend_mode = 2
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="WorldCenter/Moon" unique_id=1021565538]
+rotation = 3.1415927
+color = Color(0.72156864, 0.7176471, 0.7137255, 1)
+energy = 0.1
 shadow_enabled = true
-shadow_filter = 2
-shadow_filter_smooth = 1.0
-texture = ExtResource("13_wyce4")
-texture_scale = 5.0
 
-[node name="ProtectionArea" parent="." instance=ExtResource("11_fouhn")]
+[node name="ProtectionArea" parent="." unique_id=1324139420 instance=ExtResource("11_fouhn")]
 position = Vector2(1452, -648)
 
-[node name="ProtectionArea2" parent="." instance=ExtResource("11_fouhn")]
+[node name="ProtectionArea2" parent="." unique_id=171394784 instance=ExtResource("11_fouhn")]
 position = Vector2(1248, 872)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1252689239]
 navigation_polygon = SubResource("NavigationPolygon_cxrmr")
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1280072223]
 stream = ExtResource("14_0ymcu")
 volume_db = -4.0
 bus = &"Music"
 
-[node name="MusicTimer" type="Timer" parent="."]
+[node name="MusicTimer" type="Timer" parent="." unique_id=1178845637]
 one_shot = true
 
-[node name="SettingsCanvas" type="CanvasLayer" parent="."]
+[node name="SettingsCanvas" type="CanvasLayer" parent="." unique_id=416699981]
 
 [connection signal="body_entered" from="Water" to="." method="_OnWaterBodyEntered"]
 [connection signal="body_exited" from="Water" to="." method="_OnWaterBodyExited"]
